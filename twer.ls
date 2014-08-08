@@ -30,7 +30,7 @@ on-entry = (hospital_sn, it, cb)->
 .on \record (row,index) ->
   if index is 0
     header := row
-  else if index > 1
+  else if index > 1 and row[0]
     records.push {[header[i], row[i]] for i of row}
 
 .on \end
