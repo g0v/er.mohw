@@ -7,6 +7,7 @@ function (_) {
   function InfluxSeries(options) {
     this.seriesList = options.seriesList;
     this.alias = options.alias;
+    this.mapSrv = options.mapSrv;
     this.groupByField = options.groupByField;
     this.annotation = options.annotation;
   }
@@ -58,6 +59,7 @@ function (_) {
         if (self.alias) {
           seriesName = self.createNameForSeries(series.name, key);
         }
+        seriesName = self.mapSrv.applyMappingToTarget(seriesName);
 
         output.push({ target: seriesName, datapoints: datapoints });
       });
@@ -112,7 +114,7 @@ function (_) {
     var segments = seriesName.split('.');
     for (var i = 0; i < segments.length; i++) {
       if (segments[i].length > 0) {
-        name = name.replace('$' + i, segments[i]);
+        name = name.replace(new RegExp('\\$' + i, 'g'), segments[i]);
       }
     }
 

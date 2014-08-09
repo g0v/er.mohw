@@ -2,6 +2,7 @@ define([
   './alertSrv',
   './datasourceSrv',
   './filterSrv',
+  './mapSrv',
   './panelSrv',
   './timer',
   './panelMove',

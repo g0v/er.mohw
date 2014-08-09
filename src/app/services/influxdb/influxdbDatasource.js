@@ -9,7 +9,7 @@ function (angular, _, kbn, InfluxSeries) {
 
   var module = angular.module('grafana.services');
 
-  module.factory('InfluxDatasource', function($q, $http) {
+  module.factory('InfluxDatasource', function($q, $http, mapSrv) {
 
     function InfluxDatasource(datasource) {
       this.type = 'influxDB';
@@ -29,6 +29,7 @@ function (angular, _, kbn, InfluxSeries) {
       this.supportAnnotations = true;
       this.supportMetrics = true;
       this.annotationEditorSrc = 'app/partials/influxdb/annotation_editor.html';
+      this.mapSrv = mapSrv;
     }
 
     InfluxDatasource.prototype.query = function(filterSrv, options) {
@@ -113,7 +114,7 @@ function (angular, _, kbn, InfluxSeries) {
           alias = filterSrv.applyTemplateToTarget(target.alias);
         }
 
-        var handleResponse = _.partial(handleInfluxQueryResponse, alias, groupByField);
+        var handleResponse = _.partial(handleInfluxQueryResponse, alias, groupByField, this.mapSrv);
         return this._seriesQuery(query).then(handleResponse);
 
       }, this);
@@ -365,10 +366,11 @@ function (angular, _, kbn, InfluxSeries) {
       });
     };
 
-    function handleInfluxQueryResponse(alias, groupByField, seriesList) {
+    function handleInfluxQueryResponse(alias, groupByField, mapSrv, seriesList) {
       var influxSeries = new InfluxSeries({
         seriesList: seriesList,
         alias: alias,
+        mapSrv: mapSrv,
         groupByField: groupByField
       });
 
