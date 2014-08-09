@@ -1,61 +1,10 @@
 {
-  "title": "Grafana",
+  "title": "全國重度級急救責任醫院急診即時訊息",
   "tags": [],
   "style": "dark",
   "timezone": "browser",
   "editable": true,
   "rows": [
-    {
-      "title": "New row",
-      "height": "150px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 12,
-          "editable": true,
-          "type": "text",
-          "mode": "html",
-          "content": "<div class=\"text-center\" style=\"padding-top: 15px\">\n<img src=\"http://grafana.org/assets/img/logo_transparent_200x75.png\"> \n</div>",
-          "style": {},
-          "title": "Welcome to"
-        }
-      ],
-      "notice": false
-    },
-    {
-      "title": "Welcome to Grafana",
-      "height": "210px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [
-        {
-          "error": false,
-          "span": 6,
-          "editable": true,
-          "type": "text",
-          "loadingEditor": false,
-          "mode": "html",
-          "content": "<br/>\n\n<div class=\"row-fluid\">\n  <div class=\"span6\">\n    <ul>\n      <li>\n        <a href=\"http://grafana.org/docs#configuration\" target=\"_blank\">Configuration</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/troubleshooting\" target=\"_blank\">Troubleshooting</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/support\" target=\"_blank\">Support</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/intro\" target=\"_blank\">Getting started</a>  (Must read!)\n      </li>\n    </ul>\n  </div>\n  <div class=\"span6\">\n    <ul>\n      <li>\n        <a href=\"http://grafana.org/docs/features/graphing\" target=\"_blank\">Graphing</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/annotations\" target=\"_blank\">Annotations</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/graphite\" target=\"_blank\">Graphite</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/influxdb\" target=\"_blank\">InfluxDB</a>\n      </li>\n      <li>\n        <a href=\"http://grafana.org/docs/features/opentsdb\" target=\"_blank\">OpenTSDB</a>\n      </li>\n    </ul>\n  </div>\n</div>",
-          "style": {},
-          "title": "Documentation Links"
-        },
-        {
-          "error": false,
-          "span": 6,
-          "editable": true,
-          "type": "text",
-          "mode": "html",
-          "content": "<br/>\n\n<div class=\"row-fluid\">\n  <div class=\"span12\">\n    <ul>\n      <li>Ctrl+S saves the current dashboard</li>\n      <li>Ctrl+F Opens the dashboard finder</li>\n      <li>Ctrl+H Hide/show row controls</li>\n      <li>Click and drag graph title to move panel</li>\n      <li>Hit Escape to exit graph when in fullscreen or edit mode</li>\n      <li>Click the colored icon in the legend to change series color</li>\n      <li>Ctrl or Shift + Click legend name to hide other series</li>\n    </ul>\n  </div>\n</div>\n",
-          "style": {},
-          "title": "Tips & Shortcuts"
-        }
-      ],
-      "notice": false
-    },
     {
       "title": "test",
       "height": "250px",
@@ -64,15 +13,15 @@
       "collapsable": true,
       "panels": [
         {
-          "span": 12,
+          "span": 4,
           "editable": true,
           "type": "graph",
           "x-axis": true,
           "y-axis": true,
           "scale": 1,
           "y_formats": [
-            "short",
-            "short"
+            "none",
+            "none"
           ],
           "grid": {
             "max": null,
@@ -93,21 +42,256 @@
           "points": false,
           "pointradius": 5,
           "bars": false,
-          "stack": true,
+          "stack": false,
           "spyable": true,
           "options": false,
           "legend": {
             "show": true,
-            "values": false,
+            "values": true,
             "min": false,
             "max": false,
-            "current": false,
+            "current": true,
             "total": false,
             "avg": false
           },
           "interactive": true,
           "legend_counts": true,
           "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "last",
+              "column": "pending_icu",
+              "series": "/ER.+/",
+              "query": "select  last(pending_icu) from /ER.+/ where  time > now() - 24h     group by time(20m)  order asc",
+              "interval": "20m",
+              "alias": "$hospital_name['$1']||'$1'",
+              "rawQuery": false
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "急診加護病房等候",
+          "datasource": null,
+          "renderer": "flot",
+          "annotate": {
+            "enable": false
+          }
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "last",
+              "column": "pending_ward",
+              "series": "/ER.+/",
+              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 24h     group by time(20m)  order asc",
+              "interval": "20m",
+              "alias": "$hospital_name['$1']||'$1'",
+              "rawQuery": false
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "急診等候住院",
+          "datasource": null,
+          "renderer": "flot",
+          "annotate": {
+            "enable": false
+          },
+          "leftYAxisLabel": "人數"
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "last",
+              "column": "pending_bed",
+              "series": "/ER.+/",
+              "query": "select  last(pending_bed) from /ER.+/ where  time > now() - 24h     group by time(20m)  order asc",
+              "interval": "20m",
+              "alias": "$hospital_name['$1']||'$1'",
+              "rawQuery": false
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "急診等候推床",
+          "datasource": null,
+          "renderer": "flot",
+          "annotate": {
+            "enable": false
+          }
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "test",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
+        {
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": true,
+            "alignAsTable": true
+          },
           "percentage": false,
           "zerofill": true,
           "nullPointMode": "connected",
@@ -118,19 +302,41 @@
           },
           "targets": [
             {
-              "target": "randomWalk('random walk')",
-              "function": "mean",
-              "column": "value"
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from \"ER.1142120001\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "ward"
+            },
+            {
+              "function": "last",
+              "column": "pending_icu",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from \"ER.1142120001\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "icu"
+            },
+            {
+              "function": "last",
+              "column": "pending_doctor",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_doctor) from \"ER.1142120001\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "doctor"
+            },
+            {
+              "function": "last",
+              "column": "pending_bed",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_bed) from \"ER.1142120001\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "bed"
             }
           ],
           "aliasColors": {},
           "aliasYAxis": {},
-          "title": "First Graph (click title to edit)",
-          "datasource": "graphite",
-          "renderer": "flot",
-          "annotate": {
-            "enable": false
-          }
+          "title": "Details"
         }
       ],
       "notice": false
@@ -141,7 +347,7 @@
       "type": "filtering",
       "collapse": false,
       "notice": false,
-      "enable": false
+      "enable": true
     },
     {
       "type": "annotations",
@@ -182,11 +388,152 @@
     }
   ],
   "time": {
-    "from": "now-6h",
+    "from": "now-24h",
     "to": "now"
   },
   "templating": {
-    "list": []
+    "list": [
+      {
+        "type": "filter",
+        "name": "hospital",
+        "query": "select distinct(hospital_sn) from ER",
+        "options": [
+          {
+            "text": "0501110514",
+            "value": "0501110514"
+          },
+          {
+            "text": "1101020018",
+            "value": "1101020018"
+          },
+          {
+            "text": "0601160016",
+            "value": "0601160016"
+          },
+          {
+            "text": "0602030026",
+            "value": "0602030026"
+          },
+          {
+            "text": "1141310019",
+            "value": "1141310019"
+          },
+          {
+            "text": "1131100010",
+            "value": "1131100010"
+          },
+          {
+            "text": "1131010011",
+            "value": "1131010011"
+          },
+          {
+            "text": "1302050014",
+            "value": "1302050014"
+          },
+          {
+            "text": "0937010019",
+            "value": "0937010019"
+          },
+          {
+            "text": "0421040011",
+            "value": "0421040011"
+          },
+          {
+            "text": "0401180014",
+            "value": "0401180014"
+          },
+          {
+            "text": "1131050515",
+            "value": "1131050515"
+          },
+          {
+            "text": "1101150011",
+            "value": "1101150011"
+          },
+          {
+            "text": 1111060015,
+            "value": 1111060015
+          },
+          {
+            "text": "0617060018",
+            "value": "0617060018"
+          },
+          {
+            "text": "0943030019",
+            "value": "0943030019"
+          },
+          {
+            "text": "1536030075",
+            "value": "1536030075"
+          },
+          {
+            "text": "1140010510",
+            "value": "1140010510"
+          },
+          {
+            "text": "1317050017",
+            "value": "1317050017"
+          },
+          {
+            "text": "1142120001",
+            "value": "1142120001"
+          },
+          {
+            "text": "1137010024",
+            "value": "1137010024"
+          },
+          {
+            "text": "1132070011",
+            "value": "1132070011"
+          },
+          {
+            "text": "1301200010",
+            "value": "1301200010"
+          },
+          {
+            "text": "0936050029",
+            "value": "0936050029"
+          },
+          {
+            "text": "1434020015",
+            "value": "1434020015"
+          },
+          {
+            "text": "1145010010",
+            "value": "1145010010"
+          },
+          {
+            "text": "0439010518",
+            "value": "0439010518"
+          },
+          {
+            "text": "1142100017",
+            "value": "1142100017"
+          },
+          {
+            "text": "1331040513",
+            "value": "1331040513"
+          },
+          {
+            "text": "1317040011",
+            "value": "1317040011"
+          },
+          {
+            "text": "1101100011",
+            "value": "1101100011"
+          },
+          {
+            "text": "0936060016",
+            "value": "0936060016"
+          }
+        ],
+        "current": {
+          "text": "1142120001",
+          "value": "1142120001"
+        }
+      }
+    ]
   },
+  "refresh": false,
   "version": 2
 }
