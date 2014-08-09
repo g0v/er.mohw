@@ -637,12 +637,12 @@
         },
         {
           "error": false,
-          "span": 2,
+          "span": 3,
           "editable": true,
           "type": "text",
           "loadingEditor": false,
           "mode": "markdown",
-          "content": "## 測試中\n1. 左鍵點選項目可調整dashboard (fullscreen etc)\n2. 詳細使用方法, 參見 [Grafana] (https://www.youtube.com/watch?v=OUvJamHeMpw)\n專案資訊、問題回報：[hackpad](https://g0v.hackpad.com/%E5%85%A8%E5%9C%8B%E9%87%8D%E5%BA%A6%E7%B4%9A%E6%80%A5%E6%95%91%E8%B2%AC%E4%BB%BB%E9%86%AB%E9%99%A2%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF-vtLwiUfYgcc)",
+          "content": "1. 左鍵點選項目標題可調整 dashboard (fullscreen etc)\n2. 詳細使用方法, 參見 [Grafana](https://www.youtube.com/watch?v=OUvJamHeMpw)\n3. 專案資訊、問題回報：[hackpad](https://g0v.hackpad.com/vtLwiUfYgcc)",
           "style": {},
           "title": "測試中"
         }
