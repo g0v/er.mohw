@@ -63,7 +63,7 @@ function (_) {
       });
     });
 
-    return output;
+    return _.sortBy(output, 'target')
   };
 
   p.getAnnotations = function () {
