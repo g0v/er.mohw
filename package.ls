@@ -19,3 +19,4 @@ dependencies:
   shelljs: \0.3.x
   influx: \1.0.x
   csv: \0.3.0
+  'moment-timezone': \0.2.x
