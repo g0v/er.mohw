@@ -55,6 +55,7 @@ app/controllers/influxTargetCtrl.js
 app/controllers/playlistCtrl.js
 app/controllers/inspectCtrl.js
 app/controllers/opentsdbTargetCtrl.js
+app/controllers/console-ctrl.js
 app/controllers/all.js
 app/directives/addPanel.js
 app/directives/arrayJoin.js
