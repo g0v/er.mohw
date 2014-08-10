@@ -375,9 +375,9 @@
             {
               "target": "randomWalk('random walk')",
               "function": "difference",
-              "column": "pending_ward",
+              "column": "pending_icu",
               "series": "/ER.+/",
-              "query": "select  difference(pending_ward) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
+              "query": "select  difference(pending_icu) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
