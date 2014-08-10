@@ -1,5 +1,5 @@
 require! <[csv execSync fs q minimist shelljs influx]>
-{update,genmap,influx-host,influx-db,influx-user,influx-pass}:argv = minimist process.argv.slice 2
+{update,only,genmap,influx-host,influx-db,influx-user,influx-pass}:argv = minimist process.argv.slice 2
 [file] = argv._
 var header, client
 records = []
@@ -38,6 +38,9 @@ on-entry = (hospital_sn, it, cb)->
 if genmap
   console.log JSON.stringify { hospital_name: {[r.hospital_sn, r.abbr_zh] for r in records}}, null ,4
   return
+
+if only
+  records .= filter -> it.hospital_sn ~= only
 
 q.all-settled <| records.map (r) ->
   dir = "crawlers/#{r.hospital_sn}"
