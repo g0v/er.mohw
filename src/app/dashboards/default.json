@@ -73,7 +73,7 @@
               "function": "last",
               "column": "pending_ward",
               "series": "/ER.+/",
-              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
+              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 24h     group by time(20m)  order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
@@ -148,7 +148,7 @@
               "function": "last",
               "column": "pending_icu",
               "series": "/ER.+/",
-              "query": "select  last(pending_icu) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
+              "query": "select  last(pending_icu) from /ER.+/ where  time > now() - 24h     group by time(20m)  order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
@@ -222,7 +222,7 @@
               "function": "last",
               "column": "pending_bed",
               "series": "/ER.+/",
-              "query": "select  last(pending_bed) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
+              "query": "select  last(pending_bed) from /ER.+/ where  time > now() - 24h     group by time(20m)  order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
@@ -303,7 +303,7 @@
               "function": "last",
               "column": "pending_ward",
               "series": "/ER.+/",
-              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 12h and full_reported = true group by time(20m)  order asc",
+              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 24h and full_reported = true group by time(20m)  order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']",
               "condition_filter": true,
@@ -377,8 +377,8 @@
               "function": "difference",
               "column": "pending_icu",
               "series": "/ER.+/",
-              "query": "select  difference(pending_icu) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
-              "interval": "20m",
+              "query": "select  difference(pending_icu) from /ER.+/ where  time > now() - 24h     group by time(30m)  order asc",
+              "interval": "30m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
             }
@@ -454,7 +454,7 @@
               "function": "difference",
               "column": "pending_ward",
               "series": "/ER.+/",
-              "query": "select  difference(pending_ward) from /ER.+/ where  time > now() - 24h     group by time(20m)  order asc",
+              "query": "select  difference(pending_ward) from /ER.+/ where  time > now() - 24h     group by time(30m)  order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": true
@@ -471,8 +471,101 @@
           "leftYAxisLabel": "人數"
         },
         {
+          "span": 6,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": true,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from \"ER.0601160016\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "等待病床  $hospital_name['$1']",
+              "rawQuery": false
+            },
+            {
+              "function": "last",
+              "column": "pending_icu",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from \"ER.0601160016\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "等待加護病床"
+            },
+            {
+              "function": "last",
+              "column": "pending_doctor",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_doctor) from \"ER.0601160016\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "等待醫師看診"
+            },
+            {
+              "function": "last",
+              "column": "pending_bed",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_bed) from \"ER.0601160016\" where  time > now() - 24h     group by time(1h)  order asc",
+              "interval": "1h",
+              "alias": "等急診推床(等同沒有床躺)"
+            }
+          ],
+          "aliasColors": {},
+          "aliasYAxis": {},
+          "title": "個別醫院查詢 (請點選左上角hospita ID)"
+        },
+        {
           "error": false,
-          "span": 12,
+          "span": 6,
           "editable": true,
           "type": "text",
           "loadingEditor": false,
@@ -1556,101 +1649,7 @@
       "editable": true,
       "collapse": false,
       "collapsable": true,
-      "panels": [
-        {
-          "span": 4,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": true,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "等待病床  $hospital_name['$1']",
-              "rawQuery": false
-            },
-            {
-              "function": "last",
-              "column": "pending_icu",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "等待加護病床"
-            },
-            {
-              "function": "last",
-              "column": "pending_doctor",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_doctor) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "等待醫師看診"
-            },
-            {
-              "function": "last",
-              "column": "pending_bed",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_bed) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "等急診推床(不然坐輪椅)"
-            }
-          ],
-          "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "個別醫院查詢 (請點選左上角hospita ID)"
-        }
-      ],
+      "panels": [],
       "notice": false
     }
   ],
@@ -1700,7 +1699,7 @@
     }
   ],
   "time": {
-    "from": "now-12h",
+    "from": "now-24h",
     "to": "now"
   },
   "templating": {
