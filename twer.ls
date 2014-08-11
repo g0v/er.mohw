@@ -47,9 +47,13 @@ q.all-settled <| records.map (r) ->
   console.log dir
   if update
     if fs.exists-sync dir
-      process.chdir dir
-      execSync.run "git pull"
-      process.chdir "../.."
+      if fs.exists-sync "#dir/.git"
+        process.chdir dir
+        execSync.run "git pull origin master"
+        process.chdir "../.."
+      else
+        execSync.run "git submodule init #dir"
+        execSync.run "git submodule update #dir"
     else
       execSync.run "git submodule add #{r.scraper} #dir"
 
