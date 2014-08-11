@@ -6,7 +6,7 @@
   "editable": true,
   "rows": [
     {
-      "title": "test",
+      "title": "候床總覽",
       "height": "250px",
       "editable": true,
       "collapse": false,
@@ -241,7 +241,7 @@
       "notice": false
     },
     {
-      "title": "test",
+      "title": "滿床變化",
       "height": "250px",
       "editable": true,
       "collapse": false,
@@ -469,7 +469,17 @@
           "aliasColors": {},
           "aliasYAxis": {},
           "title": "急診已滿床通報"
-        },
+        }
+      ],
+      "notice": false
+    },
+    {
+      "title": "說明",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "collapsable": true,
+      "panels": [
         {
           "span": 6,
           "editable": true,
@@ -570,7 +580,7 @@
           "type": "text",
           "loadingEditor": false,
           "mode": "markdown",
-          "content": "1. 左鍵點選項目標題可調整 dashboard (fullscreen etc)\n2. 詳細使用方法, 參見 [Grafana](https://www.youtube.com/watch?v=OUvJamHeMpw)\n3. 專案資訊、問題回報：[hackpad](https://g0v.hackpad.com/vtLwiUfYgcc)\n4. 以下為分區",
+          "content": "*各醫院更新資料速度不同，本站每 20 分鐘抓取一次，請自行向各醫院確認。*\n\n1. 左鍵點選項目標題可調整 dashboard (fullscreen etc)\n2. 詳細使用方法, 參見 [Grafana](https://www.youtube.com/watch?v=OUvJamHeMpw)\n3. 專案資訊、問題回報：[hackpad](https://g0v.hackpad.com/vtLwiUfYgcc)\n4. 以下為分區\n\n急診即時資訊是以「現狀 (AS IS)」被提供出來，並不附隨著任何明示或默示的保證。在任何的情況下，本站都不會因為任何的要求、損害賠償或其他可歸責事由而來承擔責任。",
           "style": {},
           "title": "說明"
         },
@@ -1641,15 +1651,6 @@
           "title": "台南市待床總覽"
         }
       ],
-      "notice": false
-    },
-    {
-      "title": "test",
-      "height": "250px",
-      "editable": true,
-      "collapse": false,
-      "collapsable": true,
-      "panels": [],
       "notice": false
     }
   ],
