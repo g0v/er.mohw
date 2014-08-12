@@ -1,1 +1,8 @@
-[¥ş°ê­««×¯Å«æ±Ï³d¥ôÂå°|«æ¶E§Y®É°T®§²Î­p¦a¹Ï½d¨Ò](http://jsbin.com/mequnuyuqiso/1)
+ï»¿## geojosn
+
+[hp.json at github](https://github.com/y12studio/y12io/blob/master/projects/g0v-er/data/hp.json)
+
+[hp.json from rawgit with CORS support](https://rawgit.com/y12studio/y12io/master/projects/g0v-er/data/hp.json)
+
+## live demo
+[å…¨åœ‹é‡åº¦ç´šæ€¥æ•‘è²¬ä»»é†«é™¢æ€¥è¨ºå³æ™‚è¨Šæ¯çµ±è¨ˆåœ°åœ–ç¯„ä¾‹](http://jsbin.com/mequnuyuqiso/1)
