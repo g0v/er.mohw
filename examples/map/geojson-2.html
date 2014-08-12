@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>等待病床數24小時統計值</title>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  <script type='text/javascript' src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+<h3>全國重度級急救責任醫院急診即時訊息統計地圖範例</h3>
+<h3>等待病床數24小時統計值</h3>
+ <div id="map" style="width: 600px; height: 400px"></div>
+
+ <script type='text/javascript'>
+	var mapTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+			maxZoom : 18,
+			attribution : 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery c <a href="http://mapbox.com">Mapbox</a>',
+			id : 'examples.map-20v6611k'
+		});
+	var g0vDataUrl = "http://api-beta.ly.g0v.tw:8086/db/twer/series?p=guest&q=select+mean(pending_ward),stddev(pending_ward)+from+%2FER.%2B%2F+where+time+%3E+now()+-+24h+order+asc&time_precision=s&u=guest";
+	var hpDataUrl = "https://rawgit.com/y12studio/y12io/master/projects/g0v-er/data/hp.json";
+	var g0vData, hpData;
+	$.when(
+		$.getJSON(g0vDataUrl, function (data) {
+			g0vData = data;
+		}),
+		$.getJSON(hpDataUrl, function (data) {
+			hpData = data;
+		})).then(function () {
+		if (g0vData && hpData) {
+
+			$.each(hpData.features, function (i, item) {
+				hpid = item.id;
+				//console.log(item.id);
+				var foundElements = $.grep(g0vData, function (element, index) {
+						return element.name == "ER." + hpid;
+					});
+
+				if (foundElements.length > 0) {
+					//console.log(foundElements[0]);
+					var point = foundElements[0].points[0];
+					item.properties.mean = point[1];
+					item.properties.stddev = point[2];
+				}
+			});
+
+			var geojson = L.geoJson(hpData, {
+					onEachFeature : function (feature, layer) {
+						var popupContent = "<h3>" + feature.properties.abbr + "</h3>"
+							 + "<p>mean(24h)=" + parseFloat(feature.properties.mean).toPrecision(5) + "</p>"
+							 + "<p>stddev(24h)=" + parseFloat(feature.properties.stddev).toPrecision(5) + "</p>";
+						layer.bindPopup(popupContent);
+					}
+				});
+			var map = L.map('map').fitBounds(geojson.getBounds());
+			mapTiles.addTo(map);
+			geojson.addTo(map);
+		} else {
+			// Request for graphic data didn't work, handle it
+		}
+	});
+  </script>
+  </body>
+</html>

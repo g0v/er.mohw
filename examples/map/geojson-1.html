@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>g0v ER map</title>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
+  <script type='text/javascript' src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+</head>
+<body>
+ <div id="map" style="width: 600px; height: 400px"></div>
+
+ <script type='text/javascript'>
+	var mapTiles = L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+			maxZoom : 18,
+			attribution : 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+			'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+			'Imagery c <a href="http://mapbox.com">Mapbox</a>',
+			id : 'examples.map-20v6611k'
+		});
+	$.getJSON("https://rawgit.com/y12studio/y12io/master/projects/g0v-er/data/hp.json", function (data) {
+		var geojson = L.geoJson(data, {
+				onEachFeature : function (feature, layer) {
+					var popupContent = "<h3>" + feature.properties.abbr + "</h3><p>";
+					layer.bindPopup(popupContent);
+
+				}
+			});
+		var map = L.map('map').fitBounds(geojson.getBounds());
+		mapTiles.addTo(map);
+		geojson.addTo(map);
+	});
+  </script>
+  </body>
+</html>

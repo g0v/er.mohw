@@ -1,0 +1,1 @@
+[全國重度級急救責任醫院急診即時訊息統計地圖範例](http://jsbin.com/mequnuyuqiso/1)
