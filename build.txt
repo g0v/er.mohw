@@ -37,6 +37,7 @@ app/services/playlistSrv.js
 app/services/unsavedChangesSrv.js
 app/services/dashboard/dashboardKeyBindings.js
 app/services/dashboard/dashboardSrv.js
+app/services/dashboard/dashboardViewStateSrv.js
 app/services/all.js
 app/controllers/dash.js
 vendor/filesaver.js
