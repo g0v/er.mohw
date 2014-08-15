@@ -22,6 +22,7 @@ function (angular, _, moment, config) {
       $scope.onAppEvent('zoom-out', function() {
         $scope.zoom(2);
       });
+
     };
 
     $scope.set_default = function() {
@@ -133,6 +134,7 @@ function (angular, _, moment, config) {
 
     $scope.openSaveDropdown = function() {
       $scope.isFavorite = playlistSrv.isCurrentFavorite($scope.dashboard);
+      $scope.saveDropdownOpened = true;
     };
 
     $scope.markAsFavorite = function() {

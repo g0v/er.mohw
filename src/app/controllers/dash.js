@@ -26,6 +26,10 @@ function (angular, $, config, _) {
     $scope.setupDashboard = function(event, dashboardData) {
       timer.cancel_all();
 
+      $rootScope.performance.dashboardLoadStart = new Date().getTime();
+      $rootScope.performance.panelsInitialized = 0;
+      $rootScope.performance.panelsRendered= 0;
+
       $scope.dashboard = dashboardSrv.create(dashboardData);
       $scope.dashboardViewState = dashboardViewStateSrv.create($scope);
 
@@ -78,10 +82,6 @@ function (angular, $, config, _) {
         height: '250px',
         editable: true,
       };
-    };
-
-    $scope.row_style = function(row) {
-      return { 'min-height': row.collapse ? '5px' : row.height };
     };
 
     $scope.panel_path =function(type) {

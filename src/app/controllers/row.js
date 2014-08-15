@@ -32,7 +32,7 @@ function (angular, app, _) {
       }
     };
 
-     // This can be overridden by individual panels
+    // This can be overridden by individual panels
     $scope.close_edit = function() {
       $scope.$broadcast('render');
     };
@@ -106,6 +106,35 @@ function (angular, app, _) {
 
     $scope.init();
 
+  });
+
+  module.directive('rowHeight', function() {
+    return function(scope, element) {
+      scope.$watchGroup(['row.collapse', 'row.height'], function() {
+        element[0].style.minHeight = scope.row.collapse ? '5px' : scope.row.height;
+      });
+    };
+  });
+
+  module.directive('panelWidth', function() {
+    return function(scope, element) {
+      scope.$watch('panel.span', function() {
+        element[0].style.width = ((scope.panel.span / 1.2) * 10) + '%';
+      });
+    };
+  });
+
+  module.directive('panelDropZone', function() {
+    return function(scope, element) {
+      scope.$watch('dashboard.$$panelDragging', function(newVal) {
+        if (newVal && scope.dashboard.rowSpan(scope.row) < 10) {
+          element.show();
+        }
+        else {
+          element.hide();
+        }
+      });
+    };
   });
 
 });
