@@ -10,17 +10,27 @@ function (angular, $, config, _) {
 
   var module = angular.module('grafana.controllers');
 
-  module.controller('DashCtrl', function(
+  module.controller('DashboardCtrl', function(
       $scope, $rootScope, dashboardKeybindings,
       filterSrv, dashboardSrv, dashboardViewStateSrv,
-      panelMoveSrv, timer) {
+      panelMoveSrv, timer, $timeout) {
 
     $scope.editor = { index: 0 };
     $scope.panelNames = config.panels;
+    var resizeEventTimeout;
 
     $scope.init = function() {
       $scope.availablePanels = config.panels;
       $scope.onAppEvent('setup-dashboard', $scope.setupDashboard);
+      $scope.reset_row();
+      $scope.registerWindowResizeEvent();
+    };
+
+    $scope.registerWindowResizeEvent = function() {
+      angular.element(window).bind('resize', function() {
+        $timeout.cancel(resizeEventTimeout);
+        resizeEventTimeout = $timeout(function() { $scope.$broadcast('render'); }, 200);
+      });
     };
 
     $scope.setupDashboard = function(event, dashboardData) {
@@ -46,7 +56,7 @@ function (angular, $, config, _) {
       $scope.panelMoveOver = panelMove.onOver;
       $scope.panelMoveOut = panelMove.onOut;
 
-      window.document.title = 'Grafana - ' + $scope.dashboard.title;
+      window.document.title = config.window_title_prefix + $scope.dashboard.title;
 
       // start auto refresh
       if($scope.dashboard.refresh) {
