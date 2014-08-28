@@ -29,8 +29,8 @@ function (Settings) {
       grafana: {
         type: 'influxdb',
         url: "http://api-beta.ly.g0v.tw:8086/db/grafana",
-        username: 'root',
-        password: 'xiPHGE',
+        username: 'dashboard',
+        password: 'dashboard',
         grafanaDB: true
       },
     },

@@ -38,6 +38,7 @@ app/services/timer.js
 app/services/panelMove.js
 app/services/keyboardManager.js
 app/services/annotationsSrv.js
+app/components/store.js
 app/services/playlistSrv.js
 app/services/unsavedChangesSrv.js
 app/services/dashboard/dashboardKeyBindings.js
@@ -71,7 +72,8 @@ app/panels/annotations/module.js
 text!panels/annotations/module.html
 app/panels/filtering/module.js
 text!panels/filtering/module.html
-app/panels/graph/timeSeries.js
+app/components/timeSeries.js
+app/panels/graph/seriesOverridesCtrl.js
 vendor/jquery/jquery.flot.events.js
 vendor/jquery/jquery.flot.selection.js
 vendor/jquery/jquery.flot.time.js
