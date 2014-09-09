@@ -3,6 +3,9 @@ er.mohw.g0v.tw
 
 Aggregate ER state liveboard
 
+* grafana: http://er.mohw.g0v.tw
+* map demo: http://jsbin.com/mequnuyuqiso/2/edit
+
 
 # CC0 1.0 Universal
 
