@@ -31,5 +31,5 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 高雄市,高雄榮民總醫院,0602030026,高雄榮總,,http://www.vghks.gov.tw/ISCenter/data/VGHKERINFO.PDF,https://gist.github.com/cornguo/65a441c91e7465982881,cornguo,,php,
 高雄市,長庚醫療財團法人高雄長庚紀念醫院,1142100017,高雄長庚,,https://www.cgmh.org.tw/bed/erd/index.asp?loc=8,https://gist.github.com/cornguo/57734b63d39ae49a7e97,cornguo,,php,
 屏東縣,安泰醫療社團法人安泰醫院,0943030019,安泰,,http://www.tsmh.org.tw/~webapp/b/web_dg/er_status/er_show.php,https://gist.github.com/lanfon72/9ab25384500b0bb4f02b,lanf0n,,py,"hint: https://gist.githubusercontent.com/clkao/4315df56fe8193138f67/raw/422ab0d3fedf0926ee0087ba529e52dd4a303e0e/gistfile1.txt"
-花蓮縣,佛教慈濟醫療財團法人花蓮慈濟醫院,1145010010,慈濟,,http://hlm.tzuchi.com.tw/,https://gist.github.com/lanfon72/76e86a034febee01566b,lanf0n,,py,
+花蓮縣,佛教慈濟醫療財團法人花蓮慈濟醫院,1145010010,慈濟,,http://hlm.tzuchi.com.tw/html/hlinfos.html,https://gist.github.com/t0mst0ne/db06df0ee642bd76de24,t0mst0ne,,py,
 嘉義縣,戴德森醫療財團法人嘉義基督教醫院,1122010012,嘉基,,http://www.cych.org.tw/cychweb/er/er_news.aspx,https://gist.github.com/t0mst0ne/67450a18d5c30c7d928f,t0m,,py,
