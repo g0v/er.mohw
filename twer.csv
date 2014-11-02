@@ -17,7 +17,7 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 台中市,中山醫學大學附設醫院,1317040011,中山醫大,,http://www.csh.org.tw/ER/index.aspx,https://gist.github.com/cornguo/379556c003ca7d149c03,cornguo,,php,
 台中市,臺中榮民總醫院,0617060018,台中榮總,,http://www.vghtc.gov.tw/GipOpenWeb/wSite/sp?xdUrl=/wSite/query/Doctor/GetEmgBedInform.jsp&ctNode=55658&mp=1&idPath=213_55658,https://gist.github.com/cornguo/c3b97701f25acabb37fb,cornguo,,php,
 台中市,中國醫藥大學附設醫院,1317050017,中國醫大,,http://61.66.117.8/EmrCount/Default.aspx,https://gist.github.com/cornguo/e357bade74728a63d7d6,cornguo,,php,
-台中市,童綜合醫療社團法人童綜合醫院,0936060016,童綜,,http://www.sltung.com.tw/tw/BED/bed.html,https://gist.github.com/cornguo/98eaafc98d0a29e1e991,cornguo,,php,
+台中市,童綜合醫療社團法人童綜合醫院,0936060016,童綜,,http://www.sltung.com.tw/tw/BED/bed.html,https://gist.github.com/lanfon72/637b2e86dc063ea12eed,lanf0n,,python,
 台中市,光田醫療社團法人光田綜合醫院(沙鹿總院),0936050029,沙鹿光田,,http://www.ktgh.com.tw/BednoInfo_Show.asp?CatID=80&ModuleType=Y,https://gist.github.com/cornguo/8719ec64666f9436f7e7,cornguo,,php,"please use big5-2003 instead of big5 for iconv // it will cause error: PHP Notice:  iconv(): Wrong charset, conversion from `big5-2003' to `utf-8' is not allowed, and there's no special characters that will cause problems"
 台中市,光田醫療社團法人光田綜合醫院(大甲院區),1536030075,大甲光田,,http://www.ktgh.com.tw/BednoInfo_Show.asp?CatID=81&ModuleType=Y,https://gist.github.com/cornguo/00fcf3dde1297aec9cd3,cornguo,,php,
 彰化縣,彰化基督教醫療財團法人彰化基督教醫院,1137010024,彰基,,http://www.cch.org.tw/news/er_news.aspx,https://gist.github.com/cornguo/e4405652885004488916,cornguo,,php,
