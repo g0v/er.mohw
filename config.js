@@ -22,17 +22,10 @@ function (Settings) {
     datasources: {
       influxdb: {
         type: 'influxdb',
-        url: "http://api-beta.ly.g0v.tw:8086/db/twer",
+        url: "http://influxdb.g0v.tw:8086/db/twer",
         username: 'guest',
         password: 'guest',
-      },
-      grafana: {
-        type: 'influxdb',
-        url: "http://api-beta.ly.g0v.tw:8086/db/grafana",
-        username: 'dashboard',
-        password: 'dashboard',
-        grafanaDB: true
-      },
+      }
     },
 
     // Graphite & Elasticsearch example setup
