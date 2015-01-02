@@ -17,7 +17,6 @@ module.exports = function(grunt) {
     'ngmin:build',
     'requirejs:build',
     'concat:js',
-    'filerev',
     'usemin',
     'clean:temp',
     'uglify:dest'
