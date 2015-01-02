@@ -1,4 +1,6 @@
 module.exports = function(config,grunt) {
+  'use strict';
+
   var _c = {
     build: {
       options: {
@@ -52,19 +54,22 @@ module.exports = function(config,grunt) {
         'timepicker',
         'datepicker',
         'lodash',
-        'filters/all',
         'jquery.flot',
-        'services/all',
         'angular-strap',
-        'directives/all',
-        'jquery.flot.pie',
         'angular-dragdrop',
+        'services/all',
+        'features/all',
+        'directives/all',
+        'filters/all',
+        'controllers/all',
+        'routes/standalone/default',
+        'components/partials',
       ]
     }
   ];
 
   var fs = require('fs');
-  var panelPath = config.srcDir+'/app/panels'
+  var panelPath = config.srcDir+'/app/panels';
 
   // create a module for each directory in src/app/panels/
   fs.readdirSync(panelPath).forEach(function (panelName) {

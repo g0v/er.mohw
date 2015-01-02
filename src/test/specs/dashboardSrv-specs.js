@@ -1,5 +1,5 @@
 define([
-  'services/dashboard/dashboardSrv'
+  'features/dashboard/dashboardSrv'
 ], function() {
   'use strict';
 
@@ -18,7 +18,6 @@ define([
     it('should have default properties', function() {
       expect(model.rows.length).to.be(0);
       expect(model.nav.length).to.be(1);
-      expect(model.pulldowns.length).to.be(2);
     });
 
   });
@@ -71,14 +70,20 @@ define([
       expect(dashboard.rows[0].panels[1].id).to.be(11);
     });
 
-    it('duplicate should add row if there is no space left', function() {
-      var panel = { span: 12, attr: '123' };
-      dashboard.rows = [{ panels: [panel] }];
-      dashboard.duplicatePanel(panel, dashboard.rows[0]);
+  });
 
-      expect(dashboard.rows[0].panels[0].span).to.be(12);
-      expect(dashboard.rows[0].panels.length).to.be(1);
-      expect(dashboard.rows[1].panels[0].attr).to.be('123');
+  describe('when creating dashboard with editable false', function() {
+    var model;
+
+    beforeEach(module('grafana.services'));
+    beforeEach(inject(function(dashboardSrv) {
+      model = dashboardSrv.create({
+        editable: false
+      });
+    }));
+
+    it('should set editable false', function() {
+      expect(model.editable).to.be(false);
     });
 
   });
@@ -90,7 +95,18 @@ define([
     beforeEach(module('grafana.services'));
     beforeEach(inject(function(dashboardSrv) {
       model = dashboardSrv.create({
-        services: { filter: { time: { from: 'now-1d', to: 'now'}, list: [1] }},
+        services: { filter: { time: { from: 'now-1d', to: 'now'}, list: [{}] }},
+        pulldowns: [
+          {
+            type: 'filtering',
+            enable: true
+          },
+          {
+            type: 'annotations',
+            enable: true,
+            annotations: [{name: 'old'}]
+          }
+        ],
         rows: [
           {
             panels: [
@@ -119,7 +135,7 @@ define([
 
     it('should move time and filtering list', function() {
       expect(model.time.from).to.be('now-1d');
-      expect(model.templating.list[0]).to.be(1);
+      expect(model.templating.list[0].allFormat).to.be('glob');
     });
 
     it('graphite panel should change name too graph', function() {
@@ -140,8 +156,36 @@ define([
       expect(graph.seriesOverrides[0].yaxis).to.be(2);
     });
 
+    it('should move pulldowns to new schema', function() {
+      expect(model.templating.enable).to.be(true);
+      expect(model.annotations.enable).to.be(true);
+      expect(model.annotations.list[0].name).to.be('old');
+    });
+
     it('dashboard schema version should be set to latest', function() {
-      expect(model.version).to.be(4);
+      expect(model.version).to.be(6);
+    });
+
+  });
+
+  describe('when creating dashboard model with missing list for annoations or templating', function() {
+    var model;
+
+    beforeEach(module('grafana.services'));
+    beforeEach(inject(function(dashboardSrv) {
+      model = dashboardSrv.create({
+        annotations: {
+          enable: true,
+        },
+        templating: {
+          enable: true
+        }
+      });
+    }));
+
+    it('should add empty list', function() {
+      expect(model.annotations.list.length).to.be(0);
+      expect(model.templating.list.length).to.be(0);
     });
 
   });

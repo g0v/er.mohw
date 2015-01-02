@@ -1,39 +1,53 @@
 define([
-    'kbn'
-], function(kbn) {
+ 'kbn',
+ 'lodash'
+], function(kbn, _) {
   'use strict';
 
   function ControllerTestContext() {
     var self = this;
 
     this.datasource = {};
+    this.$element = {};
     this.annotationsSrv = {};
+    this.timeSrv = new TimeSrvStub();
+    this.templateSrv = new TemplateSrvStub();
     this.datasourceSrv = {
       getMetricSources: function() {},
       get: function() { return self.datasource; }
     };
 
-    this.providePhase = function() {
+    this.providePhase = function(mocks) {
       return module(function($provide) {
         $provide.value('datasourceSrv', self.datasourceSrv);
         $provide.value('annotationsSrv', self.annotationsSrv);
+        $provide.value('timeSrv', self.timeSrv);
+        $provide.value('templateSrv', self.templateSrv);
+        $provide.value('$element', self.$element);
+        _.each(mocks, function(value, key) {
+          $provide.value(key, value);
+        });
       });
     };
 
     this.createControllerPhase = function(controllerName) {
-      return inject(function($controller, $rootScope, $q) {
+      return inject(function($controller, $rootScope, $q, $location) {
         self.scope = $rootScope.$new();
+        self.$location = $location;
+        self.scope.grafana = {};
         self.scope.panel = {};
         self.scope.row = { panels:[] };
-        self.scope.filter = new FilterSrvStub();
         self.scope.dashboard = {};
         self.scope.dashboardViewState = new DashboardViewStateStub();
+        self.scope.appEvent = sinon.spy();
+        self.scope.onAppEvent = sinon.spy();
 
         $rootScope.colors = [];
         for (var i = 0; i < 50; i++) { $rootScope.colors.push('#' + i); }
 
         self.$q = $q;
         self.scope.skipDataOnInit = true;
+        self.scope.skipAutoInit = true;
         self.controller = $controller(controllerName, {
           $scope: self.scope
         });
@@ -44,15 +58,30 @@ define([
 
   function ServiceTestContext() {
     var self = this;
+    self.templateSrv = new TemplateSrvStub();
+    self.timeSrv = new TimeSrvStub();
+    self.datasourceSrv = {};
+    self.$routeParams = {};
+
+    this.providePhase = function(mocks) {
+     return module(function($provide) {
+       _.each(mocks, function(key) {
+         $provide.value(key, self[key]);
+       });
+      });
+    };
 
     this.createService = function(name) {
-      return inject([name, '$q', '$rootScope', '$httpBackend', function(InfluxDatasource, $q, $rootScope, $httpBackend) {
-        self.service = InfluxDatasource;
+      return inject(function($q, $rootScope, $httpBackend, $injector) {
         self.$q = $q;
         self.$rootScope = $rootScope;
-        self.filterSrv = new FilterSrvStub();
         self.$httpBackend =  $httpBackend;
-      }]);
+
+        self.$rootScope.onAppEvent = function() {};
+        self.$rootScope.appEvent = function() {};
+
+        self.service = $injector.get(name);
+      });
     };
   }
 
@@ -61,7 +90,8 @@ define([
     };
   }
 
-  function FilterSrvStub() {
+  function TimeSrvStub() {
+    this.init = sinon.spy();
     this.time = { from:'now-1h', to: 'now'};
     this.timeRange = function(parse) {
       if (parse === false) {
@@ -73,15 +103,30 @@ define([
       };
     };
 
-    this.applyTemplateToTarget = function(target) {
+    this.replace = function(target) {
       return target;
     };
   }
 
+  function TemplateSrvStub() {
+    this.variables = [];
+    this.templateSettings = { interpolate : /\[\[([\s\S]+?)\]\]/g };
+    this.data = {};
+    this.replace = function(text) {
+      return _.template(text, this.data,  this.templateSettings);
+    };
+    this.init = function() {};
+    this.updateTemplateData = function() { };
+    this.variableExists = function() { return false; };
+    this.highlightVariablesAsHtml = function(str) { return str; };
+    this.setGrafanaVariable = function(name, value) {
+      this.data[name] = value;
+    };
+  }
 
   return {
     ControllerTestContext: ControllerTestContext,
-    FilterSrvStub: FilterSrvStub,
+    TimeSrvStub: TimeSrvStub,
     ServiceTestContext: ServiceTestContext
   };
 

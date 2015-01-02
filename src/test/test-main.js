@@ -4,7 +4,8 @@ require.config({
   paths: {
     specs:                 '../test/specs',
     mocks:                 '../test/mocks',
-    config:                '../config.sample',
+    helpers:               '../test/specs/helpers',
+    config:                ['../config', '../config.sample'],
     kbn:                   'components/kbn',
     store:                 'components/store',
 
@@ -18,6 +19,7 @@ require.config({
 
     angular:               '../vendor/angular/angular',
     'angular-route':       '../vendor/angular/angular-route',
+    'angular-sanitize':    '../vendor/angular/angular-sanitize',
     angularMocks:          '../vendor/angular/angular-mocks',
     'angular-dragdrop':       '../vendor/angular/angular-dragdrop',
     'angular-strap':          '../vendor/angular/angular-strap',
@@ -32,8 +34,6 @@ require.config({
     bootstrap:                '../vendor/bootstrap/bootstrap',
     'bootstrap-tagsinput':    '../vendor/tagsinput/bootstrap-tagsinput',
 
-    'jquery-ui':              '../vendor/jquery/jquery-ui-1.10.3',
-
     'extend-jquery':          'components/extend-jquery',
 
     'jquery.flot':            '../vendor/jquery/jquery.flot',
@@ -43,6 +43,8 @@ require.config({
     'jquery.flot.stack':      '../vendor/jquery/jquery.flot.stack',
     'jquery.flot.stackpercent':'../vendor/jquery/jquery.flot.stackpercent',
     'jquery.flot.time':       '../vendor/jquery/jquery.flot.time',
+    'jquery.flot.crosshair':  '../vendor/jquery/jquery.flot.crosshair',
+    'jquery.flot.fillbelow':  '../vendor/jquery/jquery.flot.fillbelow',
 
     modernizr:                '../vendor/modernizr-2.6.1',
   },
@@ -69,7 +71,6 @@ require.config({
       exports: 'Crypto'
     },
 
-    'jquery-ui':            ['jquery'],
     'jquery.flot':          ['jquery'],
     'jquery.flot.pie':      ['jquery', 'jquery.flot'],
     'jquery.flot.events':   ['jquery', 'jquery.flot'],
@@ -77,16 +78,15 @@ require.config({
     'jquery.flot.stack':    ['jquery', 'jquery.flot'],
     'jquery.flot.stackpercent':['jquery', 'jquery.flot'],
     'jquery.flot.time':     ['jquery', 'jquery.flot'],
+    'jquery.flot.crosshair':['jquery', 'jquery.flot'],
+    'jquery.flot.fillbelow':['jquery', 'jquery.flot'],
 
     'angular-route':        ['angular'],
-    'angular-cookies':      ['angular'],
-    'angular-dragdrop':     ['jquery','jquery-ui','angular'],
-    'angular-loader':       ['angular'],
+    'angular-sanitize':     ['angular'],
+    'angular-dragdrop':     ['jquery', 'angular'],
     'angular-mocks':        ['angular'],
-    'angular-resource':     ['angular'],
-    'angular-touch':        ['angular'],
-    'bindonce':             ['angular'],
     'angular-strap':        ['angular', 'bootstrap','timepicker', 'datepicker'],
+    'bindonce':             ['angular'],
 
     'bootstrap-tagsinput':          ['jquery'],
 
@@ -97,9 +97,10 @@ require.config({
 
 require([
   'angular',
+  'config',
   'angularMocks',
   'app',
-], function(angular) {
+], function(angular, config) {
   'use strict';
 
   for (var file in window.__karma__.files) {
@@ -108,31 +109,41 @@ require([
     }
   }
 
-
   angular.module('grafana', ['ngRoute']);
   angular.module('grafana.services', ['ngRoute', '$strap.directives']);
   angular.module('grafana.panels', []);
   angular.module('grafana.filters', []);
 
-  require([
+  var specs = [
     'specs/lexer-specs',
     'specs/parser-specs',
     'specs/gfunc-specs',
     'specs/timeSeries-specs',
     'specs/row-ctrl-specs',
     'specs/graphiteTargetCtrl-specs',
+    'specs/graphiteDatasource-specs',
+    'specs/influxSeries-specs',
+    'specs/influxQueryBuilder-specs',
     'specs/influxdb-datasource-specs',
     'specs/graph-ctrl-specs',
-    'specs/grafanaGraph-specs',
+    'specs/graph-specs',
+    'specs/graph-tooltip-specs',
     'specs/seriesOverridesCtrl-specs',
-    'specs/filterSrv-specs',
+    'specs/sharePanelCtrl-specs',
+    'specs/timeSrv-specs',
+    'specs/templateSrv-specs',
+    'specs/templateValuesSrv-specs',
     'specs/kbn-format-specs',
     'specs/dashboardSrv-specs',
-    'specs/dashboardViewStateSrv-specs',
-    'specs/influxSeries-specs'
-  ], function () {
-    window.__karma__.start();
+    'specs/dashboardViewStateSrv-specs'
+  ];
+
+  var pluginSpecs = (config.plugins.specs || []).map(function (spec) {
+    return '../plugins/' + spec;
   });
 
+  require(specs.concat(pluginSpecs), function () {
+    window.__karma__.start();
+  });
 });
 

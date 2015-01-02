@@ -59,6 +59,7 @@ a.text-success:hover { color: darken(@green, 10%); }
 	}
 
 	.brand {
+		padding: 0px 15px;
 
 		&:hover {
 			color: @navbarLinkColorHover;
@@ -159,8 +160,9 @@ div.subnav {
 	li.active > a,
 	li.active > a:hover {
 		border-color: transparent;
-		background-color: @blue;
-		color: @white;
+	  background-color: transparent;
+		border-bottom: 2px solid @blue;
+		color: @blue
 	}
 
 	li.disabled > a {
@@ -460,7 +462,6 @@ legend {
 // -----------------------------------------------------
 
 .alert {
-	.border-radius(0);
 	text-shadow: none;
 
 	&-heading, h1, h2, h3, h4, h5, h6 {

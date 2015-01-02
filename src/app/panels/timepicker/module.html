@@ -9,23 +9,27 @@
       border: 0px !important;
     }
   </style>
-  <!--  This is a complete hack. The form actually exists in the modal, but due to transclusion
-        $scope.input isn't available on the controller unless the form element is in this file -->
-  <form name="input" style="margin:3px 0 0 0">
-    <ul class="nav nav-pills timepicker-dropdown">
-      <li class="dropdown">
+  <form name="input" style="margin:0">
+		<ul class="nav timepicker-dropdown">
 
-        <a class="dropdown-toggle timepicker-dropdown" data-toggle="dropdown" href="" bs-tooltip="time.tooltip" data-placement="bottom" ng-click="dismiss();">
-          <span ng-show="filter.time" ng-bind="time.rangeString"></span>
-          <span ng-hide="filter.time">Time filter</span>
-          <span ng-show="dashboard.refresh" class="text-warning">refreshed every {{dashboard.refresh}} </span>
-          <i class="icon-caret-down"></i>
-        </a>
+			<li class="grafana-menu-zoom-out">
+				<a class='small' ng-click='zoom(2)'>
+					Zoom Out
+				</a>
+			</li>
 
-        <ul class="dropdown-menu">
-          <!-- Relative time options -->
-          <li bindonce ng-repeat='timespan in panel.time_options track by $index'>
-            <a ng-click="setRelativeFilter(timespan)" bo-text="'Last ' + timespan"></a>
+			<li class="dropdown">
+
+				<a class="dropdown-toggle timepicker-dropdown" data-toggle="dropdown" href="" bs-tooltip="time.tooltip" data-placement="bottom" ng-click="dismiss();">
+					<span ng-bind="time.rangeString"></span>
+					<span ng-show="dashboard.refresh" class="text-warning">refreshed every {{dashboard.refresh}} </span>
+					<i class="icon-caret-down"></i>
+				</a>
+
+				<ul class="dropdown-menu">
+					<!-- Relative time options -->
+					<li bindonce ng-repeat='timespan in panel.time_options track by $index'>
+						<a ng-click="setRelativeFilter(timespan)" bo-text="'Last ' + timespan"></a>
           </li>
 
           <!-- Auto refresh submenu -->
@@ -33,10 +37,10 @@
             <a href="#">Auto-Refresh</a>
             <ul class="dropdown-menu">
               <li>
-                <a ng-click="dashboard.set_interval(false)">Off</a>
+                <a ng-click="timeSrv.set_interval(false)">Off</a>
               </li>
               <li bindonce ng-repeat="interval in panel.refresh_intervals track by $index">
-                <a ng-click="dashboard.set_interval(interval)" bo-text="'Every ' + interval"></a>
+                <a ng-click="timeSrv.set_interval(interval)" bo-text="'Every ' + interval"></a>
               </li>
             </ul>
           </li>
@@ -45,9 +49,8 @@
 
       </li>
       <li ng-show="!dashboard.refresh" class="grafana-menu-refresh">
-        <a ng-click="dashboard.emit_refresh()"><i class="icon-refresh"></i></a>
+        <a ng-click="timeSrv.refreshDashboard()"><i class="icon-refresh"></i></a>
       </li>
     </ul>
-
   </form>
 </div>

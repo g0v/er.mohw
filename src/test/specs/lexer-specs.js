@@ -1,5 +1,5 @@
 define([
-  'services/graphite/lexer'
+  'features/graphite/lexer'
 ], function(Lexer) {
   'use strict';
 
@@ -27,6 +27,12 @@ define([
       var tokens = lexer.tokenize();
       expect(tokens[0].value).to.be('net');
       expect(tokens[2].value).to.be('192-168-1-1');
+    });
+
+    it('should tokenize metric expression with equal sign', function() {
+      var lexer = new Lexer('apps=test');
+      var tokens = lexer.tokenize();
+      expect(tokens[0].value).to.be('apps=test');
     });
 
     it('simple function2', function() {

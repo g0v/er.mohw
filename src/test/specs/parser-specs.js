@@ -1,5 +1,5 @@
 define([
-  'services/graphite/parser'
+  'features/graphite/parser'
 ], function(Parser) {
   'use strict';
 
@@ -154,6 +154,24 @@ define([
       expect(rootNode.type).to.be('metric');
       expect(rootNode.segments[0].value).to.be('{apps}');
       expect(rootNode.segments[1].value).to.be('test');
+    });
+
+    it('series parameters', function() {
+      var parser = new Parser('asPercent(#A, #B)');
+      var rootNode = parser.getAst();
+      expect(rootNode.type).to.be('function');
+      expect(rootNode.params[0].type).to.be('series-ref');
+      expect(rootNode.params[0].value).to.be('#A');
+      expect(rootNode.params[1].value).to.be('#B');
+    });
+
+    it('should parse metric expression with ip number segments', function() {
+      var parser = new Parser('5.10.123.5');
+      var rootNode = parser.getAst();
+      expect(rootNode.segments[0].value).to.be('5');
+      expect(rootNode.segments[1].value).to.be('10');
+      expect(rootNode.segments[2].value).to.be('123');
+      expect(rootNode.segments[3].value).to.be('5');
     });
 
   });

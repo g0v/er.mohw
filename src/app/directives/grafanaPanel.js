@@ -1,9 +1,10 @@
 define([
   'angular',
   'jquery',
-  'lodash',
+  'config',
+  './panelMenu',
 ],
-function (angular, $) {
+function (angular, $, config) {
   'use strict';
 
   angular
@@ -15,37 +16,19 @@ function (angular, $) {
 
       var panelHeader =
       '<div class="panel-header">'+
-       '<div class="row-fluid panel-extra">' +
-          '<div class="panel-extra-container">' +
-            '<span class="alert-error panel-error small pointer"' +
-                  'config-modal="app/partials/inspector.html" ng-if="panel.error">' +
-              '<span data-placement="right" bs-tooltip="panel.error">' +
-              '<i class="icon-exclamation-sign"></i><span class="panel-error-arrow"></span>' +
-              '</span>' +
+          '<span class="alert-error panel-error small pointer"' +
+                'config-modal="app/partials/inspector.html" ng-if="panelMeta.error">' +
+            '<span data-placement="top" bs-tooltip="panelMeta.error">' +
+            '<i class="icon-exclamation-sign"></i><span class="panel-error-arrow"></span>' +
             '</span>' +
+          '</span>' +
 
-            '<span class="panel-loading" ng-show="panelMeta.loading">' +
-              '<i class="icon-spinner icon-spin icon-large"></i>' +
-            '</span>' +
+          '<span class="panel-loading" ng-show="panelMeta.loading">' +
+            '<i class="icon-spinner icon-spin icon-large"></i>' +
+          '</span>' +
 
-            '<span class="dropdown">' +
-              '<span class="panel-text panel-title pointer" gf-dropdown="panelMeta.menu" tabindex="1" ' +
-              'data-drag=true data-jqyoui-options="kbnJqUiDraggableOptions"'+
-              ' jqyoui-draggable="'+
-              '{'+
-                'animate:false,'+
-                'mutate:false,'+
-                'index:{{$index}},'+
-                'onStart:\'panelMoveStart\','+
-                'onStop:\'panelMoveStop\''+
-                '}"  ng-model="panel" ' +
-                '>' +
-                '{{panel.title || "No title"}}' +
-              '</span>' +
-            '</span>'+
-
-          '</div>'+
-        '</div>\n'+
+          '<div class="panel-title-container drag-handle" panel-menu></div>' +
+        '</div>'+
       '</div>';
 
       return {
@@ -86,10 +69,12 @@ function (angular, $) {
 
           elem.addClass('ng-cloak');
 
+          var panelPath = config.panels[panelType].path;
+
           $scope.require([
             'jquery',
-            'text!panels/'+panelType+'/module.html',
-            'panels/' + panelType + "/module",
+            'text!'+panelPath+'/module.html',
+            panelPath + "/module",
           ], function ($, moduleTemplate) {
             var $module = $(moduleTemplate);
             $module.prepend(panelHeader);

@@ -9,9 +9,11 @@
     <meta name="og:title" content="零時政府衛生福利部 - 急診看板">
     <meta name="og:description" content="全國重度級急救責任醫院急診即時訊息">
     <meta name="og:image" content="http://er.mohw.g0v.tw/img/er.screenshot.png">
+    <meta name="google" value="notranslate">
 
     <title>零時政府衛生福利部 - 全國重度級急救責任醫院急診即時訊息</title>
     <link rel="stylesheet" href="css/grafana.dark.min.css" title="Dark">
+    <link rel="icon" type="image/png" href="img/fav32.png">
 
     <!-- build:js app/app.js -->
     <script src="vendor/require/require.js"></script>
@@ -26,12 +28,17 @@
 
     <link rel="stylesheet" href="css/grafana.light.min.css" ng-if="grafana.style === 'light'">
 
-    <div ng-repeat='alert in dashAlerts.list' class="alert-{{alert.severity}} dashboard-notice" ng-show="$last">
-      <button type="button" class="close" ng-click="dashAlerts.clear(alert)" style="padding-right:50px">&times;</button>
-      <strong>{{alert.title}}</strong> <span ng-bind-html='alert.text'></span> <div style="padding-right:10px" class='pull-right small'> {{$index + 1}} alert(s) </div>
-    </div>
+		<div class="page-alert-list">
+			<div ng-repeat='alert in dashAlerts.list' class="alert-{{alert.severity}} alert">
+				<button type="button" class="alert-close" ng-click="dashAlerts.clear(alert)">
+					<i class="icon-remove-sign"></i>
+				</button>
+				<div class="alert-title">{{alert.title}}</div>
+				<div ng-bind-html='alert.text'></div>
+			</div>
+		</div>
 
-    <div ng-view></div>
+		<div ng-view></div>
 
-  </body>
+	</body>
 </html>
