@@ -21,7 +21,7 @@ on-entry = (hospital_sn, it, cb)->
   console.log \FIXME it unless it === normalized
   normalized.time = (delete normalized.update_time) * 1000ms
   normalized.time ||= new Date!getTime!
-  delete normalized.hospital_sn
+  delete normalized.hosptial_sn
   normalized.hospital_sn ?= hospital_sn
 
   client?write-point 'ER', normalized, {}, cb
