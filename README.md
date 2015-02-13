@@ -16,11 +16,3 @@ This work is published from Taiwan.
 
 http://creativecommons.org/publicdomain/zero/1.0
 
-# Influxdb docker 
-## Install the influxdb 
-Follow the steps here : https://github.com/tutumcloud/tutum-docker-influxdb
-## Run the docker and the data will stored at host /data 
-sudo docker run -d -p  8083:8083 -p 8086:8086 --expose 8090 -v /host/dir/data:/data tutum/influxdb
-
-# Query ER status periodically
-node twer.js twer.csv  --influxHost Host_IP --influxDb twER --influxUser guest --influxPass guest
