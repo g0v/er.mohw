@@ -8,7 +8,7 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 台北市,台北市立萬芳醫院,1301200010,萬芳,,http://www.wanfang.gov.tw/W402008web_new/epd_query.asp,https://gist.github.com/lanfon72/954b5d96ddf0e365f22f,lanf0n,johnny,py,
 台北市,三軍總醫院附設民眾診療服務處,0501110514,三總,,http://www1.ndmctsgh.edu.tw/ErOnlineNews/ErOnLineData.aspx,https://gist.github.com/lanfon72/b2e1cb6fc4b2fb2d2957,lanf0n,,py,
 台北市,台北榮民總醫院,0601160016,榮總,,https://www6.vghtpe.gov.tw/ERREALIFO/ERREALIFO.jsp,https://gist.github.com/lanfon72/b43d515d69041a1dae14,lanf0n,johnny,py,
-台北市,國立臺灣大學醫學院附設醫院,0401180014,台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/NTUHEmgInfo.aspx,https://gist.github.com/clkao/b8236e2b5c4e23519790,clkao,,ls,
+台北市,國立臺灣大學醫學院附設醫院,0401180014,台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/NTUHEmgInfo.aspx,https://gist.github.com/lanfon72/1938df3cb8f04ba125a5,lanf0n,,py,
 台北市,新光醫療財團法人新光吳火獅紀念醫院,1101150011,新光,,https://regis.skh.org.tw/ERONLINE/INDEX.aspx,https://gist.github.com/cornguo/d6e862ae84c0b73be3a6,cornguo,,php,
 新北市,衛生福利部雙和醫院,1331040513,雙和,,http://eng.shh.org.tw/ER_WEB/ER_WEB/,https://gist.github.com/lanfon72/47664f97f0f5dd1b2a74,lanf0n,,py,"fix values(bool, int, timestamp). (run at py2.7"
 新北市,財團法人徐元智先生醫藥基金會附設亞東紀念醫院,1131010011,亞東,,http://www.femh.org.tw/research/news_op.aspx,https://gist.github.com/lanfon72/72001e0dba4d8ca4b6cd,lanf0n,,py,"fix values(bool, int, timestamp). (run at py2.7"
