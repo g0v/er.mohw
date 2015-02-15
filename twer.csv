@@ -3,7 +3,7 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 宜蘭縣,財團法人羅許基金會羅東博愛醫院,1434020015,博愛,,http://www.pohai.org.tw/pohai/index.php?option=com_wrapper&Itemid=2691,https://gist.github.com/lanfon72/b5e0e2299ae0180c16c7,lanf0n,johnny,py,
 基隆市,長庚醫療財團法人基隆長庚紀念醫院,1111060015,基隆長庚,,https://www.cgmh.org.tw/bed/erd/index.asp?loc=2,https://gist.github.com/f40aab166fb536ae3e1b,t0m,johnny,py,
 台北市,國泰醫療財團法人國泰綜合醫院,1101020018,國泰,,http://med.cgh.org.tw/unit/branch/Pharmacy/ebl/RealTimeInfoHQ.html,https://gist.github.com/lanfon72/3575509a8604f3bf7335,lanf0n,johnny,py,
-台北市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1101100011,台北馬偕,,https://trns.mmh.org.tw/WebEMR/Default.aspx,https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f,"johnny",,py,台北and馬偕：參考https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f
+台北市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1101100011,台北馬偕,,https://trns.mmh.org.tw/WebEMR/Default.aspx,https://gist.github.com/t0mst0ne/fba18dcfd89b5ac69b9e,"t0mst0ne",,py,台北and馬偕：參考https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f
 新北市,(同上),1131100010,淡水馬偕,,https://trns.mmh.org.tw/WebEMR/Default.aspx,https://gist.github.com/lanfon72/7a43aedc8e8f7f63ca0a,lanf0n,,py,"combine by johnny: https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f"
 台北市,台北市立萬芳醫院,1301200010,萬芳,,http://www.wanfang.gov.tw/W402008web_new/epd_query.asp,https://gist.github.com/lanfon72/954b5d96ddf0e365f22f,lanf0n,johnny,py,
 台北市,三軍總醫院附設民眾診療服務處,0501110514,三總,,http://www1.ndmctsgh.edu.tw/ErOnlineNews/ErOnLineData.aspx,https://gist.github.com/lanfon72/b2e1cb6fc4b2fb2d2957,lanf0n,,py,
@@ -17,11 +17,11 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 台中市,中山醫學大學附設醫院,1317040011,中山醫大,,http://www.csh.org.tw/ER/index.aspx,https://gist.github.com/cornguo/379556c003ca7d149c03,cornguo,,php,
 台中市,臺中榮民總醫院,0617060018,台中榮總,,http://www.vghtc.gov.tw/GipOpenWeb/wSite/sp?xdUrl=/wSite/query/Doctor/GetEmgBedInform.jsp&ctNode=55658&mp=1&idPath=213_55658,https://gist.github.com/cornguo/c3b97701f25acabb37fb,cornguo,,php,
 台中市,中國醫藥大學附設醫院,1317050017,中國醫大,,http://61.66.117.8/EmrCount/Default.aspx,https://gist.github.com/cornguo/e357bade74728a63d7d6,cornguo,,php,
-台中市,童綜合醫療社團法人童綜合醫院,0936060016,童綜,,http://www.sltung.com.tw/tw/BED/bed.html,https://gist.github.com/cornguo/98eaafc98d0a29e1e991,cornguo,,php,
+台中市,童綜合醫療社團法人童綜合醫院,0936060016,童綜,,http://www.sltung.com.tw/tw/BED/bed.html,https://gist.github.com/lanfon72/637b2e86dc063ea12eed,lanf0n,,python,
 台中市,光田醫療社團法人光田綜合醫院(沙鹿總院),0936050029,沙鹿光田,,http://www.ktgh.com.tw/BednoInfo_Show.asp?CatID=80&ModuleType=Y,https://gist.github.com/cornguo/8719ec64666f9436f7e7,cornguo,,php,"please use big5-2003 instead of big5 for iconv // it will cause error: PHP Notice:  iconv(): Wrong charset, conversion from `big5-2003' to `utf-8' is not allowed, and there's no special characters that will cause problems"
 台中市,光田醫療社團法人光田綜合醫院(大甲院區),1536030075,大甲光田,,http://www.ktgh.com.tw/BednoInfo_Show.asp?CatID=81&ModuleType=Y,https://gist.github.com/cornguo/00fcf3dde1297aec9cd3,cornguo,,php,
 彰化縣,彰化基督教醫療財團法人彰化基督教醫院,1137010024,彰基,,http://www.cch.org.tw/news/er_news.aspx,https://gist.github.com/cornguo/e4405652885004488916,cornguo,,php,
-彰化縣,秀傳醫療社團法人秀傳紀念醫院,0937010019,秀傳,,http://www.scmh.org.tw/,https://gist.github.com/cornguo/edf206eabc2a85a134c1,cornguo,,php,
+彰化縣,秀傳醫療社團法人秀傳紀念醫院,0937010019,秀傳,,http://www.scmh.org.tw/,https://gist.github.com/t0mst0ne/5686e8581393339b2a7e,t0mst0ne,,py,
 嘉義縣,長庚醫療財團法人嘉義長庚紀念醫院,1140010510,嘉義長庚,,https://www.cgmh.org.tw/bed/erd/index.asp?loc=6,https://gist.github.com/cornguo/f1e01eff0c2610f6f002,cornguo,,php,
 雲林縣,國立臺灣大學醫學院附設醫院雲林分院,0439010518,雲林台大,,http://reg.ntuh.gov.tw/EmgInfoBoard/Y0NTUHEmgInfo.aspx,https://gist.github.com/cornguo/136e005b346e28837d8e,cornguo,,php,
 台南市,奇美醫療財團法人奇美醫院,1141310019,奇美,,http://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx?ihosp=10,https://gist.github.com/cornguo/b4c7c14d3a286b5149c7,cornguo,,php,
@@ -31,5 +31,5 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 高雄市,高雄榮民總醫院,0602030026,高雄榮總,,http://www.vghks.gov.tw/ISCenter/data/VGHKERINFO.PDF,https://gist.github.com/cornguo/65a441c91e7465982881,cornguo,,php,
 高雄市,長庚醫療財團法人高雄長庚紀念醫院,1142100017,高雄長庚,,https://www.cgmh.org.tw/bed/erd/index.asp?loc=8,https://gist.github.com/cornguo/57734b63d39ae49a7e97,cornguo,,php,
 屏東縣,安泰醫療社團法人安泰醫院,0943030019,安泰,,http://www.tsmh.org.tw/~webapp/b/web_dg/er_status/er_show.php,https://gist.github.com/lanfon72/9ab25384500b0bb4f02b,lanf0n,,py,"hint: https://gist.githubusercontent.com/clkao/4315df56fe8193138f67/raw/422ab0d3fedf0926ee0087ba529e52dd4a303e0e/gistfile1.txt"
-花蓮縣,佛教慈濟醫療財團法人花蓮慈濟醫院,1145010010,慈濟,,http://hlm.tzuchi.com.tw/,https://gist.github.com/lanfon72/76e86a034febee01566b,lanf0n,,py,
+花蓮縣,佛教慈濟醫療財團法人花蓮慈濟醫院,1145010010,慈濟,,http://hlm.tzuchi.com.tw/html/hlinfos.html,https://gist.github.com/t0mst0ne/db06df0ee642bd76de24,t0mst0ne,,py,
 嘉義縣,戴德森醫療財團法人嘉義基督教醫院,1122010012,嘉基,,http://www.cych.org.tw/cychweb/er/er_news.aspx,https://gist.github.com/t0mst0ne/67450a18d5c30c7d928f,t0m,,py,
