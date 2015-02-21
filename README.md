@@ -16,3 +16,20 @@ This work is published from Taiwan.
 
 http://creativecommons.org/publicdomain/zero/1.0
 
+# install dependencies
+
+* nodejs and npm
+* python2 and requests library
+* php
+* [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html)
+
+For nodejs, after install, remember ```npm i``` .  and remember clone submodule: ```git submodule init && git submodule update --init``` .
+
+# continuous query
+Write a Query ```select * from ER into ER.[hospital_sn]``` after your database created.
+
+# Running
+Run twer.js to grab data from submodule.
+```bash
+node twer.js twer.csv --influxHost [yourHost] --influxDb [yourdatabase] --influxUser [youraccount] --influxPass [yourpass]
+```
