@@ -19,7 +19,7 @@ http://creativecommons.org/publicdomain/zero/1.0
 # install dependencies
 
 * nodejs and npm
-* python2 and requests library
+* python2 and [requests library](http://docs.python-requests.org/en/latest/)
 * php
 * [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html)
 
