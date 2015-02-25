@@ -69,7 +69,7 @@
 	url = https://gist.github.com/cornguo/136e005b346e28837d8e
 [submodule "crawlers/1141310019"]
 	path = crawlers/1141310019
-	url = https://gist.github.com/cornguo/b4c7c14d3a286b5149c7
+	url = https://gist.github.com/lanfon72/14f08fc32ad0552e7059
 [submodule "crawlers/0421040011"]
 	path = crawlers/0421040011
 	url = https://gist.github.com/cornguo/af0d8fcc780ff5c6d40b
@@ -97,3 +97,9 @@
 [submodule "crawlers/1122010012"]
 	path = crawlers/1122010012
 	url = https://gist.github.com/t0mst0ne/67450a18d5c30c7d928f
+[submodule "crawlers/1141090512"]
+	path = crawlers/1141090512
+	url = https://gist.github.com/lanfon72/3a3221b3867121114e92
+[submodule "crawlers/1105050012"]
+	path = crawlers/1105050012
+	url = https://gist.github.com/lanfon72/f174221a2d6b06479c61

@@ -24,7 +24,7 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 彰化縣,秀傳醫療社團法人秀傳紀念醫院,0937010019,秀傳,,http://www.scmh.org.tw/,https://gist.github.com/t0mst0ne/5686e8581393339b2a7e,t0mst0ne,,py,
 嘉義縣,長庚醫療財團法人嘉義長庚紀念醫院,1140010510,嘉義長庚,,https://www.cgmh.org.tw/bed/erd/index.asp?loc=6,https://gist.github.com/cornguo/f1e01eff0c2610f6f002,cornguo,,php,
 雲林縣,國立臺灣大學醫學院附設醫院雲林分院,0439010518,雲林台大,,http://reg.ntuh.gov.tw/EmgInfoBoard/Y0NTUHEmgInfo.aspx,https://gist.github.com/cornguo/136e005b346e28837d8e,cornguo,,php,
-台南市,奇美醫療財團法人奇美醫院,1141310019,奇美,,http://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx?ihosp=10,https://gist.github.com/cornguo/b4c7c14d3a286b5149c7,cornguo,,php,
+台南市,奇美醫療財團法人奇美醫院,1141310019,奇美,,http://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx?ihosp=10,https://gist.github.com/lanfon72/14f08fc32ad0552e7059,lanf0n,,py,
 台南市,奇美醫療財團法人佳里奇美醫院,1105050012,佳里奇美,,http://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/lanfon72/f174221a2d6b06479c61,lanf0n,,py,"2015/2/25 inserted."
 台南市,奇美醫療財團法人柳營奇美醫院,1141090512,柳營奇美,,http://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/lanfon72/3a3221b3867121114e92,lanf0n,,py,"2015/2/25 inserted."
 台南市,國立成功大學醫學院附設醫院,0421040011,成大,,http://www.hosp.ncku.edu.tw/nckm/ER/default.aspx,https://gist.github.com/cornguo/af0d8fcc780ff5c6d40b,cornguo,,php,
