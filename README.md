@@ -31,5 +31,6 @@ Write a Query ```select * from ER into ER.[hospital_sn]``` after your database c
 # Running
 Run twer.js to grab data from submodule.
 ```bash
-node twer.js twer.csv --influxHost [yourHost] --influxDb [yourdatabase] --influxUser [youraccount] --influxPass [yourpass]
+node twer.js twer.csv --influxHost [yourHost] --influxDb [yourdatabase] --influxUser [youraccount] --influxPass [yourpass] > temp && ./backup.sh
 ```
+Notice:  replace `[yourHost]`, `[yourdatabase]`, `[youraccount]` and `[yourpass]` to yours.
