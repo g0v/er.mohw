@@ -29,6 +29,10 @@ For nodejs, after install, remember ```npm i``` .  and remember clone submodule:
 Write a Query ```select * from ER into ER.[hospital_sn]``` after your database created.
 
 # Running
+create a directory to save backup.
+```bash
+mkdir backup
+```
 Run twer.js to grab data from submodule.
 ```bash
 node twer.js twer.csv --influxHost [yourHost] --influxDb [yourdatabase] --influxUser [youraccount] --influxPass [yourpass] > temp && ./backup.sh
