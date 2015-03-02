@@ -1627,11 +1627,8 @@
               "function": "last",
               "column": "pending_ward",
               "series": "ER.[[hospital]]",
-<<<<<<< HEAD
               "query": "select  last(pending_ward) from /ER\\.(1141310019|0421040011)/  where  time > now() - 24h     group by time(1h)  order asc",
-=======
               "query": "select  last(pending_ward) from /ER\\.(1141310019|0421040011|1105050012|1141090512)/  where  time > now() - 24h     group by time(1h)  order asc",
->>>>>>> d2a967642cd8bcfd4935c3607f5cab89f9924766
               "interval": "1h",
               "alias": "ward $hospital_name['$1'] 病房",
               "rawQuery": true,
@@ -1641,11 +1638,8 @@
               "function": "last",
               "column": "pending_ward",
               "series": "ER.[[hospital]]",
-<<<<<<< HEAD
               "query": "select  last(pending_icu) from /ER\\.(1141310019|0421040011)/  where  time > now() - 24h     group by time(1h)  order asc",
-=======
               "query": "select  last(pending_icu) from /ER\\.(1141310019|0421040011|1105050012|1141090512)/  where  time > now() - 24h     group by time(1h)  order asc",
->>>>>>> d2a967642cd8bcfd4935c3607f5cab89f9924766
               "interval": "1h",
               "alias": "ward $hospital_name['$1'] 加護病房",
               "rawQuery": true,
