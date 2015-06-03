@@ -22,7 +22,7 @@ function (Settings) {
     datasources: {
       influxdb: {
         type: 'influxdb',
-        url: "http://128.199.192.102:8086/db/twER",
+        url: "http://163.25.108.236:8086/db/twER",
         username: 'guest',
         password: 'guest',
       }
