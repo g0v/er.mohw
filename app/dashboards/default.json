@@ -457,7 +457,7 @@
               "function": "last",
               "column": "pending_ward",
               "series": "/ER.+/",
-              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 24h and full_reported = true group by time(20m)  order asc",
+              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 24h and full_reported = True group by time(20m)  order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']",
               "condition_filter": true,
