@@ -377,7 +377,7 @@
     }
   ],
   "time": {
-    "from": "now-24h",
+    "from": "now-7d",
     "to": "now"
   },
   "templating": {
@@ -532,10 +532,11 @@
         "allFormat": "glob"
       }
     ],
-    "enable": true
+    "enable": false
   },
   "annotations": {
-    "enable": false
+    "enable": false,
+    "list": []
   },
   "refresh": "15m",
   "version": 6,
