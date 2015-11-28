@@ -32,7 +32,7 @@ def main(args):
     seeds = 0
     for f in files:
         date, times  = f.split('_')
-        f_json = file_to_json('backup/'+f)
+        f_json = file_to_json(os.path.join(args.dir, f))
         seeds += len(f_json)
         times = datetime.strptime(f, '%Y-%m-%d_%H-%M').timestamp()
         if not dataset.get(date):
