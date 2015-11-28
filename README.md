@@ -45,10 +45,11 @@ python3 clerify.py [--dir <dir path>] [--output <output filename>]
 ```
 The default dir is `backup`, and output name is `dataset.json`.  it be fixed to dump a json file, so you don't need add `.json`.
 ## dataset scheme
+for the raw backup file, will be named as **"yyyy-mm-dd_HH-MM"**, for the `<date>` below, means `yyyy-mm-dd`, and `<timestamp>` means file name to be parse to timestamp.
 ```json
 [{
   "<date>": {
-    "<timestamp>": {<each hospital data as a pydict>},
+    "<timestamp>": {"<each hospital data as a pydict>"},
   }
 }]
 ```
