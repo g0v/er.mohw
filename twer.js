@@ -85,14 +85,14 @@
         if (fs.existsSync(dir)) {
           if (fs.existsSync(dir + "/.git")) {
             process.chdir(dir);
-            execSync.run("git pull origin master");
+            execSync("git pull origin master");
             process.chdir("../..");
           } else {
-            execSync.run("git submodule init " + dir);
-            execSync.run("git submodule update " + dir);
+            execSync("git submodule init " + dir);
+            execSync("git submodule update " + dir);
           }
         } else {
-          execSync.run("git submodule add " + r.scraper + " " + dir);
+          execSync("git submodule add " + r.scraper + " " + dir);
         }
       }
       if ((ref$ = shelljs.ls(dir + "/*.php")) != null) {

@@ -50,13 +50,13 @@ q.all-settled <| records.map (r) ->
     if fs.exists-sync dir
       if fs.exists-sync "#dir/.git"
         process.chdir dir
-        execSync.run "git pull origin master"
+        execSync "git pull origin master"
         process.chdir "../.."
       else
-        execSync.run "git submodule init #dir"
-        execSync.run "git submodule update #dir"
+        execSync "git submodule init #dir"
+        execSync "git submodule update #dir"
     else
-      execSync.run "git submodule add #{r.scraper} #dir"
+      execSync "git submodule add #{r.scraper} #dir"
 
   [php]? = shelljs.ls "#dir/*.php"
   [python]? = shelljs.ls "#dir/*.py"
