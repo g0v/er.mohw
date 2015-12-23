@@ -9,7 +9,7 @@ if influx-host
   client = influx do
     host : influx-host
     username : influx-user
-    password : influx-passe
+    password : influx-pass
     database : influx-db
 
 on-entry = (hospital_sn, it, cb)->
