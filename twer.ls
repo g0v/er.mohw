@@ -1,4 +1,5 @@
-require! <[csv execSync fs q minimist shelljs influx]>
+require! <[csv fs q minimist shelljs influx]>
+execSync = require 'sync-exec'
 {update,only,genmap,influx-host,influx-db,influx-user,influx-pass}:argv = minimist process.argv.slice 2
 [file] = argv._
 var header, client
@@ -8,7 +9,7 @@ if influx-host
   client = influx do
     host : influx-host
     username : influx-user
-    password : influx-pass
+    password : influx-passe
     database : influx-db
 
 on-entry = (hospital_sn, it, cb)->
