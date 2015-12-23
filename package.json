@@ -13,12 +13,12 @@
     "url": "git://github.com/g0v/er.mowh.git"
   },
   "dependencies": {
-    "LiveScript": "1.2.0",
+    "livescript": "1.4.x",
     "cheerio": "0.17.x",
     "glob": "4.0.x",
     "q": "1.0.x",
     "request": "2.39.x",
-    "execSync": "1.0.x",
+    "sync-exec": "0.6.x",
     "minimist": "0.2.x",
     "shelljs": "0.3.x",
     "influx": "1.0.x",
