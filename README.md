@@ -18,10 +18,12 @@ http://creativecommons.org/publicdomain/zero/1.0
 
 # install dependencies
 
-* nodejs and npm
+* nodejs **v0.10.x** ( v4.2.3LTS can work too.)
+* npm
 * python2 and [requests library](http://docs.python-requests.org/en/latest/)
-* php
-* [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html)
+* php **v5.x** (didn't test on php7, if you do that, PR welcome.)
+* [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html) **v0.8.3(git:fbf9a47)**  
+  **( if you use the newest version of influxdb, nodejs and npm, please check the update info on it.
 
 For nodejs, after install, remember ```npm i``` .  and remember clone submodule: ```git submodule init && git submodule update --init``` .
 
