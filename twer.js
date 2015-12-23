@@ -15,7 +15,7 @@
     client = influx({
       host: influxHost,
       username: influxUser,
-      password: influxPasse,
+      password: influxPass,
       database: influxDb
     });
   }
