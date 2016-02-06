@@ -72,8 +72,8 @@
             {
               "function": "last",
               "column": "pending_ward",
-              "series": "/ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/",
-              "query": "select last(pending_ward) from /ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/ where $timeFilter and full_reported = true group by time($interval) order asc",
+              "series": "/ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/",
+              "query": "select last(pending_ward) from /ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/ where $timeFilter and full_reported = true group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']",
               "condition_filter": true,
@@ -94,7 +94,7 @@
           "type": "text",
           "id": 24,
           "mode": "markdown",
-          "content": "\n\n# 因應 20160206 美濃地震，首頁僅顯示南區急診資訊。\n## ☞ 連至[〖20160206 美濃地震 hackfoldr〗](http://hackfoldr.org/1a5WMhNPRxTo12VidVuUKlGhN214D_RIw_gBzHP2F66c/https%253A%252F%252Fwww.google.com%252Fmaps%252Fd%252Fembed%253Fmid%253DzoIHZ-WuGMig.k23nkwUnjGUU) \n### ☞  連至原〖[全台急診看板](/#/dashboard/file/all.json)〗 \n\n\n#####☞  *各醫院更新資料速度不同，本站每 20 分鐘抓取一次，請自行向各醫院確認。*\n##### ☞ *急診即時資訊是以「現狀 (AS IS)」被提供出來，並不附隨著任何明示或默示的保證。在任何的情況下，本站都不會因為任何的要求、損害賠償或其他可歸責事由而來承擔責任。*\n##### ☞  專案資訊、問題回報：[hackpad](https://g0v.hackpad.com/vtLwiUfYgcc)",
+          "content": "\n\n# 20160206 美濃地震，首頁僅顯示南區急診資訊。 \n## ☞ 連至[〖20160206美濃地震  hackfoldr〗](http://hackfoldr.org/1a5WMhNPRxTo12VidVuUKlGhN214D_RIw_gBzHP2F66c/https%253A%252F%252Fwww.google.com%252Fmaps%252Fd%252Fembed%253Fmid%253DzoIHZ-WuGMig.k23nkwUnjGUU) \n### ☞  連至原〖[全台急診看板](/#/dashboard/file/all.json)〗 \n\n\n#####☞  *各醫院更新資料速度不同，本站每 20 分鐘抓取一次，請自行向各醫院確認。*\n##### ☞ *急診即時資訊是以「現狀 (AS IS)」被提供出來，並不附隨著任何明示或默示的保證。在任何的情況下，本站都不會因為任何的要求、損害賠償或其他可歸責事由而來承擔責任。*\n##### ☞  專案資訊、問題回報：[hackpad](https://g0v.hackpad.com/vtLwiUfYgcc)",
           "style": {},
           "links": []
         }
@@ -169,8 +169,8 @@
               "target": "randomWalk('random walk')",
               "function": "last",
               "column": "pending_ward",
-              "series": "/ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/",
-              "query": "select last(pending_ward) from /ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/ where $timeFilter group by time($interval) order asc",
+              "series": "/ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/",
+              "query": "select last(pending_ward) from /ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/ where $timeFilter group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
@@ -246,8 +246,8 @@
               "target": "randomWalk('random walk')",
               "function": "last",
               "column": "pending_icu",
-              "series": "/ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/",
-              "query": "select last(pending_icu) from /ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/ where $timeFilter group by time($interval) order asc",
+              "series": "/ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/",
+              "query": "select last(pending_icu) from /ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/ where $timeFilter group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
@@ -322,8 +322,8 @@
               "target": "randomWalk('random walk')",
               "function": "last",
               "column": "pending_bed",
-              "series": "/ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/",
-              "query": "select last(pending_bed) from /ER\\.(1141310019 |1105050012|1141090512|0421040011|1142120001|1302050014|0602030026|1142100017|0943030019)/ where $timeFilter group by time($interval) order asc",
+              "series": "/ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/",
+              "query": "select last(pending_bed) from /ER\\.(1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011|1101100010|1331040513|1131010011|1131050515|1111060015|1132070011)/ where $timeFilter group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
