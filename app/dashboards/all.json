@@ -1,9 +1,13 @@
 {
+  "id": null,
   "title": "全國重度級急救責任醫院急診即時訊息",
+  "originalTitle": "全國重度級急救責任醫院急診即時訊息",
   "tags": [],
   "style": "dark",
   "timezone": "browser",
   "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
   "rows": [
     {
       "title": "候床總覽",
@@ -65,7 +69,8 @@
           "steppedLine": true,
           "tooltip": {
             "value_type": "individual",
-            "query_as_alias": true
+            "query_as_alias": true,
+            "shared": false
           },
           "targets": [
             {
@@ -73,21 +78,22 @@
               "function": "last",
               "column": "pending_ward",
               "series": "/ER.+/",
-              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
+              "query": "select last(pending_ward) from /ER.+/ where $timeFilter group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
-              "rawQuery": false
+              "rawQuery": true
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "等待住院人數",
           "datasource": null,
           "renderer": "flot",
           "annotate": {
             "enable": false
           },
-          "leftYAxisLabel": "人數"
+          "leftYAxisLabel": "人數",
+          "id": 1,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -140,7 +146,8 @@
           "steppedLine": true,
           "tooltip": {
             "value_type": "individual",
-            "query_as_alias": true
+            "query_as_alias": true,
+            "shared": false
           },
           "targets": [
             {
@@ -148,20 +155,21 @@
               "function": "last",
               "column": "pending_icu",
               "series": "/ER.+/",
-              "query": "select  last(pending_icu) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
+              "query": "select last(pending_icu) from /ER.+/ where $timeFilter group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "等待加護病房人數",
           "datasource": null,
           "renderer": "flot",
           "annotate": {
             "enable": false
-          }
+          },
+          "id": 2,
+          "seriesOverrides": []
         },
         {
           "span": 4,
@@ -214,7 +222,8 @@
           "steppedLine": true,
           "tooltip": {
             "value_type": "individual",
-            "query_as_alias": true
+            "query_as_alias": true,
+            "shared": false
           },
           "targets": [
             {
@@ -222,20 +231,21 @@
               "function": "last",
               "column": "pending_bed",
               "series": "/ER.+/",
-              "query": "select  last(pending_bed) from /ER.+/ where  time > now() - 12h     group by time(20m)  order asc",
+              "query": "select last(pending_bed) from /ER.+/ where $timeFilter group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']||'$1'",
               "rawQuery": false
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
           "title": "等候推床人數",
           "datasource": null,
           "renderer": "flot",
           "annotate": {
             "enable": false
-          }
+          },
+          "id": 3,
+          "seriesOverrides": []
         }
       ],
       "notice": false
@@ -247,160 +257,6 @@
       "collapse": false,
       "collapsable": true,
       "panels": [
-        {
-          "span": 4,
-          "editable": true,
-          "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "max": null,
-            "min": null,
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 1,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "spyable": true,
-          "options": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": false
-          },
-          "interactive": true,
-          "legend_counts": true,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": true,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "target": "randomWalk('random walk')",
-              "function": "difference",
-              "column": "pending_ward",
-              "series": "/ER.+/",
-              "query": "select  difference(pending_ward) from /ER.+/ where  time > now() - 12h     group by time(30m)  order asc",
-              "interval": "20m",
-              "alias": "$hospital_name['$1']||'$1'",
-              "rawQuery": true
-            }
-          ],
-          "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "急診等床變化(病房是否持續滿床)",
-          "datasource": null,
-          "renderer": "flot",
-          "annotate": {
-            "enable": false
-          },
-          "leftYAxisLabel": "人數"
-        },
-        {
-          "span": 4,
-          "editable": true,
-          "type": "graph",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "max": null,
-            "min": null,
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": null,
-            "threshold2": null,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)"
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 1,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "spyable": true,
-          "options": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": false
-          },
-          "interactive": true,
-          "legend_counts": true,
-          "timezone": "browser",
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": true,
-          "tooltip": {
-            "value_type": "cumulative",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "target": "randomWalk('random walk')",
-              "function": "difference",
-              "column": "pending_icu",
-              "series": "/ER.+/",
-              "query": "select  difference(pending_icu) from /ER.+/ where  time > now() - 12h     group by time(30m)  order asc",
-              "interval": "30m",
-              "alias": "$hospital_name['$1']||'$1'",
-              "rawQuery": false
-            }
-          ],
-          "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "加護病床等床變化(加護病房是否持續滿床)",
-          "datasource": null,
-          "renderer": "flot",
-          "annotate": {
-            "enable": false
-          },
-          "leftYAxisLabel": "人數"
-        },
         {
           "span": 4,
           "editable": true,
@@ -450,32 +306,191 @@
           "steppedLine": true,
           "tooltip": {
             "value_type": "individual",
-            "query_as_alias": true
+            "query_as_alias": true,
+            "shared": false
           },
           "targets": [
             {
               "function": "last",
               "column": "pending_ward",
               "series": "/ER.+/",
-              "query": "select  last(pending_ward) from /ER.+/ where  time > now() - 24h and full_reported = True group by time(20m)  order asc",
+              "query": "select last(pending_ward) from /ER.+/ where $timeFilter and full_reported = true group by time($interval) order asc",
               "interval": "20m",
               "alias": "$hospital_name['$1']",
               "condition_filter": true,
-              "condition_key": "full_reported",
-              "condition_op": "=",
-              "condition_value": "true"
+              "condition": "full_reported = true",
+              "rawQuery": true
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "急診已滿床通報"
+          "title": "急診已滿床通報",
+          "id": 6,
+          "seriesOverrides": []
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "difference",
+              "column": "pending_icu",
+              "series": "/ER.+/",
+              "query": "select difference(pending_icu) from /ER.+/ where $timeFilter group by time($interval) order asc",
+              "interval": "30m",
+              "alias": "$hospital_name['$1']||'$1'",
+              "rawQuery": true
+            }
+          ],
+          "aliasColors": {},
+          "title": "加護病床等床變化(加護病房是否持續滿床)",
+          "datasource": null,
+          "renderer": "flot",
+          "annotate": {
+            "enable": false
+          },
+          "leftYAxisLabel": "人數",
+          "id": 5,
+          "seriesOverrides": []
+        },
+        {
+          "span": 4,
+          "editable": true,
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "max": null,
+            "min": null,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 1,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "spyable": true,
+          "options": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": false
+          },
+          "interactive": true,
+          "legend_counts": true,
+          "timezone": "browser",
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "target": "randomWalk('random walk')",
+              "function": "difference",
+              "column": "pending_ward",
+              "series": "/ER.+/",
+              "query": "select  difference(pending_ward) from /ER.+/ where  time > now() - 12h     group by time(30m)  order asc",
+              "interval": "20m",
+              "alias": "$hospital_name['$1']||'$1'",
+              "rawQuery": true
+            }
+          ],
+          "aliasColors": {},
+          "title": "急診等床變化(病房是否持續滿床)",
+          "datasource": null,
+          "renderer": "flot",
+          "annotate": {
+            "enable": false
+          },
+          "leftYAxisLabel": "人數",
+          "id": 4,
+          "seriesOverrides": []
         }
       ],
       "notice": false
     },
     {
       "title": "說明",
-      "height": "250px",
+      "height": "300px",
       "editable": true,
       "collapse": false,
       "collapsable": true,
@@ -532,14 +547,15 @@
           "steppedLine": false,
           "tooltip": {
             "value_type": "cumulative",
-            "query_as_alias": true
+            "query_as_alias": true,
+            "shared": false
           },
           "targets": [
             {
               "function": "last",
               "column": "pending_ward",
               "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
+              "query": "select last(pending_ward) from \"ER.[[hospital]]\" where $timeFilter group by time($interval) order asc",
               "interval": "1h",
               "alias": "等待病床  $hospital_name['$1']",
               "rawQuery": false
@@ -548,7 +564,7 @@
               "function": "last",
               "column": "pending_icu",
               "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
+              "query": "select last(pending_icu) from \"ER.[[hospital]]\" where $timeFilter group by time($interval) order asc",
               "interval": "1h",
               "alias": "等待加護病床"
             },
@@ -556,7 +572,7 @@
               "function": "last",
               "column": "pending_doctor",
               "series": "ER.[[hospital]]",
-              "query": "select  last(pending_doctor) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
+              "query": "select last(pending_doctor) from \"ER.[[hospital]]\" where $timeFilter group by time($interval) order asc",
               "interval": "1h",
               "alias": "等待醫師看診"
             },
@@ -564,14 +580,15 @@
               "function": "last",
               "column": "pending_bed",
               "series": "ER.[[hospital]]",
-              "query": "select  last(pending_bed) from \"ER.0601160016\" where  time > now() - 12h     group by time(1h)  order asc",
+              "query": "select last(pending_bed) from \"ER.[[hospital]]\" where $timeFilter group by time($interval) order asc",
               "interval": "1h",
               "alias": "等急診推床(等同沒有床躺)"
             }
           ],
           "aliasColors": {},
-          "aliasYAxis": {},
-          "title": "個別醫院查詢 (請點選左上角hospita ID)"
+          "title": "個別醫院查詢 (請點選左上角hospita ID)",
+          "id": 7,
+          "seriesOverrides": []
         },
         {
           "error": false,
@@ -582,1090 +599,1220 @@
           "mode": "markdown",
           "content": "*各醫院更新資料速度不同，本站每 20 分鐘抓取一次，請自行向各醫院確認。*\n\n1. 左鍵點選項目標題可調整 dashboard (fullscreen etc)\n2. 詳細使用方法, 參見 [Grafana](https://www.youtube.com/watch?v=OUvJamHeMpw)\n3. 專案資訊、問題回報：[hackpad](https://g0v.hackpad.com/vtLwiUfYgcc)\n4. 以下為分區\n\n急診即時資訊是以「現狀 (AS IS)」被提供出來，並不附隨著任何明示或默示的保證。在任何的情況下，本站都不會因為任何的要求、損害賠償或其他可歸責事由而來承擔責任。",
           "style": {},
-          "title": "說明"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1434020015)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1434020015)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "宜蘭縣待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(0943030019)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(0943030019)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "屏東縣待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1145010010)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1145010010)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "花蓮縣待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1111060015)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1111060015)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "基隆市待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1302050014|1142120001|0602030026|1142100017)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1302050014|1142120001|0602030026|1142100017)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "高雄市待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1317040011|0617060018|1317050017|0936060016|0936050029|1536030075)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1317040011|0617060018|1317050017|0936060016|0936050029|1536030075)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "台中市待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.( 1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.( 1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "台北市待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.( 1101100010|1331040513|1131010011|1131050515)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.( 1101100010|1331040513|1131010011|1131050515)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "新北市待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1132070011)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1132070011)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "桃園縣待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1137010024|0937010019)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1137010024|0937010019)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "彰化縣待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1140010510|1122010012)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1140010510|1122010012)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "嘉義縣待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(0439010518)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(0439010518)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "雲林縣待床總覽"
-        },
-        {
-          "span": 3,
-          "editable": true,
-          "type": "graph",
-          "datasource": null,
-          "renderer": "flot",
-          "x-axis": true,
-          "y-axis": true,
-          "scale": 1,
-          "y_formats": [
-            "none",
-            "none"
-          ],
-          "grid": {
-            "leftMax": null,
-            "rightMax": null,
-            "leftMin": null,
-            "rightMin": null,
-            "threshold1": 50,
-            "threshold2": 100,
-            "threshold1Color": "rgba(216, 200, 27, 0.27)",
-            "threshold2Color": "rgba(234, 112, 112, 0.22)",
-            "thresholdLine": false
-          },
-          "annotate": {
-            "enable": false
-          },
-          "resolution": 100,
-          "lines": true,
-          "fill": 1,
-          "linewidth": 2,
-          "points": false,
-          "pointradius": 5,
-          "bars": false,
-          "stack": false,
-          "legend": {
-            "show": true,
-            "values": true,
-            "min": false,
-            "max": false,
-            "current": true,
-            "total": false,
-            "avg": false,
-            "rightSide": false,
-            "alignAsTable": true
-          },
-          "percentage": false,
-          "zerofill": true,
-          "nullPointMode": "connected",
-          "steppedLine": false,
-          "tooltip": {
-            "value_type": "individual",
-            "query_as_alias": true
-          },
-          "targets": [
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_ward) from /ER\\.(1141310019|0421040011)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "query": "select  last(pending_ward) from /ER\\.(1141310019|0421040011|1105050012|1141090512)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 病房",
-              "rawQuery": true,
-              "hide": false
-            },
-            {
-              "function": "last",
-              "column": "pending_ward",
-              "series": "ER.[[hospital]]",
-              "query": "select  last(pending_icu) from /ER\\.(1141310019|0421040011)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "query": "select  last(pending_icu) from /ER\\.(1141310019|0421040011|1105050012|1141090512)/  where  time > now() - 12h     group by time(1h)  order asc",
-              "interval": "1h",
-              "alias": "ward $hospital_name['$1'] 加護病房",
-              "rawQuery": true,
-              "hide": false
-            }
-          ],
-          "aliasColors": {
-            "ward 台大": "#3F6833"
-          },
-          "aliasYAxis": {},
-          "title": "台南市待床總覽"
+          "title": "說明",
+          "id": 8
         }
       ],
       "notice": false
-    }
-  ],
-  "pulldowns": [
-    {
-      "type": "filtering",
-      "collapse": false,
-      "notice": false,
-      "enable": true
     },
     {
-      "type": "annotations",
-      "enable": false
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.( 1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.( 1101020018|1101100011|1301200010|0501110514|0601160016|0401180014|1101150011)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "台北市待床總覽",
+          "id": 15,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.( 1101100010|1331040513|1131010011|1131050515)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.( 1101100010|1331040513|1131010011|1131050515)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "新北市待床總覽",
+          "id": 16,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1317040011|0617060018|1317050017|0936060016|0936050029|1536030075)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1317040011|0617060018|1317050017|0936060016|0936050029|1536030075)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "台中市待床總覽",
+          "id": 14,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1302050014|1142120001|0602030026|1142100017)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1302050014|1142120001|0602030026|1142100017)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "高雄市待床總覽",
+          "id": 13,
+          "seriesOverrides": []
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1141310019|0421040011|1105050012|1141090512)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1141310019|0421040011|1105050012|1141090512)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "台南市待床總覽",
+          "id": 21,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1132070011)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1132070011)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "桃園縣待床總覽",
+          "id": 17,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1140010510|1122010012|1240030514)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1140010510|1122010012|1240030514)/ where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "嘉義縣待床總覽",
+          "id": 19,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1137010024|0937010019)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1137010024|0937010019)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "彰化縣待床總覽",
+          "id": 18,
+          "seriesOverrides": []
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(0439010518)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(0439010518)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "雲林縣待床總覽",
+          "id": 20,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1145010010|1145010038)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1145010010|1145010038)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "花蓮縣待床總覽",
+          "id": 11,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1111060015)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1111060015)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "基隆市待床總覽",
+          "id": 12,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(1434020015)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(1434020015)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "宜蘭縣待床總覽",
+          "id": 9,
+          "seriesOverrides": []
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(0943030019)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(0943030019)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "屏東縣待床總覽",
+          "id": 10,
+          "seriesOverrides": []
+        },
+        {
+          "span": 3,
+          "editable": true,
+          "type": "graph",
+          "datasource": null,
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "scale": 1,
+          "y_formats": [
+            "none",
+            "none"
+          ],
+          "grid": {
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "threshold1": 50,
+            "threshold2": 100,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)",
+            "thresholdLine": false
+          },
+          "annotate": {
+            "enable": false
+          },
+          "resolution": 100,
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": false,
+            "max": false,
+            "current": true,
+            "total": false,
+            "avg": false,
+            "rightSide": false,
+            "alignAsTable": true
+          },
+          "percentage": false,
+          "zerofill": true,
+          "nullPointMode": "connected",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "individual",
+            "query_as_alias": true,
+            "shared": false
+          },
+          "targets": [
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_ward) from /ER\\.(0412040012|1533050039)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 病房",
+              "rawQuery": true,
+              "hide": false
+            },
+            {
+              "function": "last",
+              "column": "pending_ward",
+              "series": "ER.[[hospital]]",
+              "query": "select  last(pending_icu) from /ER\\.(0412040012|1533050039)/  where $timeFilter group by time($interval) order asc",
+              "interval": "1h",
+              "alias": "ward $hospital_name['$1'] 加護病房",
+              "rawQuery": true,
+              "hide": false
+            }
+          ],
+          "aliasColors": {
+            "ward 台大": "#3F6833"
+          },
+          "title": "新竹縣待床總覽",
+          "id": 22,
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
     }
   ],
   "nav": [
@@ -1708,7 +1855,7 @@
   "templating": {
     "list": [
       {
-        "type": "filter",
+        "type": "query",
         "name": "hospital",
         "query": "select distinct(hospital_sn) from ER",
         "options": [
@@ -1852,11 +1999,17 @@
         "current": {
           "text": "0601160016",
           "value": "0601160016"
-        }
+        },
+        "datasource": null,
+        "allFormat": "glob"
       }
-    ]
+    ],
+    "enable": true
   },
-  "refresh": "15m",
-  "version": 2,
-  "refresh_timer": {}
+  "annotations": {
+    "enable": false
+  },
+  "refresh": false,
+  "version": 6,
+  "hideAllLegends": false
 }
