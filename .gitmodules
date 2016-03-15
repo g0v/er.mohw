@@ -112,3 +112,6 @@
 [submodule "crawlers/0412040012"]
 	path = crawlers/0412040012
 	url = https://gist.github.com/lanfon72/e0a828dcb5df3d33cd2a
+[submodule "crawlers/1145010038"]
+	path = crawlers/1145010038
+	url = https://gist.github.com/t0mst0ne/a4345363deb0255a9698
