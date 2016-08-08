@@ -17,12 +17,15 @@ http://creativecommons.org/publicdomain/zero/1.0
 
 * nodejs **v0.10.x** ( v4.2.3LTS can work too.)
 * npm
+* After install, remember install npm modules ```npm i execSync csv q minimist shelljs influx ```
 * python2 and [requests library](http://docs.python-requests.org/en/latest/)
 * php **v5.x** (didn't test on php7, if you do that, PR welcome.)
+* After install php, install php5-curl
 * [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html) **v0.8.3(git:fbf9a47)**  
   **( if you use the newest version of influxdb, nodejs and npm, please check the update info on it.
 
-For nodejs, after install, remember ```npm i execSync csv q minimist shelljs influx ``` .  and remember clone submodule: ```git submodule init && git submodule update --init``` .
+# Clone repo submodules
+remember clone submodule: ```git submodule init && git submodule update --init``` .
 
 ### Continuous query
 Write a Query ```select * from ER into ER.[hospital_sn]``` after your database created.
