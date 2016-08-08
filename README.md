@@ -63,6 +63,6 @@ for the raw backup file, will be named as **"yyyy-mm-dd_HH-MM"**, for the `<date
 
 ### influx-db docker images wtih usages
 1. docker pull t0mst0ne/influx-er
-2. sudo docker run --restart=always -d -p  8083:8083 -p 8086:8086 --expose 8090 --expose 8099 -v /somewhere/data:/data influx-er
+2. sudo docker run --restart=always -d -p  8083:8083 -p 8086:8086 --expose 8090 --expose 8099 -v /somewhere/data:/data t0mst0ne/influx-er
 3. edit crontab with the following lines , assume the repo er.mohw was at /somewhere/
 4. */20 * * * *  cd /somewhere/er.mohw && /usr/bin/node /somewhere/er.mohw/twer.js /somewhere/er.mohw/twer.csv  --influxHost x.x.x.x (ip address) --influxDb twer --influxUser guest --influxPass guest > temp && ./backup.sh
