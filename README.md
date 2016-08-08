@@ -22,7 +22,7 @@ http://creativecommons.org/publicdomain/zero/1.0
 * [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html) **v0.8.3(git:fbf9a47)**  
   **( if you use the newest version of influxdb, nodejs and npm, please check the update info on it.
 
-For nodejs, after install, remember ```npm i``` .  and remember clone submodule: ```git submodule init && git submodule update --init``` .
+For nodejs, after install, remember ```npm i execSync csv q minimist shelljs influx ``` .  and remember clone submodule: ```git submodule init && git submodule update --init``` .
 
 ### Continuous query
 Write a Query ```select * from ER into ER.[hospital_sn]``` after your database created.
