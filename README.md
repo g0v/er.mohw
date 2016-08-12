@@ -13,34 +13,46 @@ To the extent possible under law, Chia-liang Kao has waived all copyright and re
 This work is published from Taiwan.  
 http://creativecommons.org/publicdomain/zero/1.0
 
-# Install dependencies
+# Overview
+### this project contains three parts:
+- **influxdb**, database for store time serial json data from scripts.
+- **grafana**, in gh-pages branch, frontend website.
+- **crawlers**, submodules in this branch(master), to crawling data from hospitals.
 
-* nodejs **v0.10.x** ( v4.2.3LTS can work too.)
-* npm
-* After install, remember install npm modules ```npm i execSync csv q minimist shelljs influx ```
-* python2 and [requests library](http://docs.python-requests.org/en/latest/)
-* php **v5.x** (didn't test on php7, if you do that, PR welcome.)
-* After install php, install php5-curl
-* [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html) **v0.8.3(git:fbf9a47)**  
-  **( if you use the newest version of influxdb, nodejs and npm, please check the update info on it.
 
-# Clone repo submodules
-remember clone submodule: ```git submodule init && git submodule update --init``` .
+# Install influxdb
+1. we suggest to use **v0.8.3(git:fbf9a47)** [influxdb](http://influxdb.com/docs/v0.8/introduction/installation.html)
+(this repo built on it, if you use newest version, please check the update information.)
+2. Continuous Query: write a Query ```select * from ER into ER.[hospital_sn]``` after your database created.
 
-### Continuous query
-Write a Query ```select * from ER into ER.[hospital_sn]``` after your database created.
+
+# Install crawlers
+### dependencies
+* nodejs **v0.10.x** or **v4.2.3LTS**. (npm also required, it usually installed with nodejs)  
+ (remember install npm modules from package.json. (`npm install` or `npm i`)
+* python2 and [requests library](http://docs.python-requests.org/en/latest/).
+* php **v5.x** and php5-curl. (didn't test on php7, if you do that, PR welcome.)
+
+### submodules
+* run ```git submodule init && git submodule update --init``` to clone submodules.
 
 
 # Running
-**Please make sure you already install all dependencies**, create a directory to save backup.
+### Please make sure you already installed influxdb and crawlers.
+1. Run `mkdir backup` to create a directory to save backup.
+2. Run twer.js to grab data from submodule:
 ```bash
-mkdir backup
+$ node twer.js twer.csv --influxHost [yourHost] --influxDb [yourdatabase] --influxUser [youraccount] --influxPass [yourpass] > temp && ./backup.sh
 ```
-Run twer.js to grab data from submodule.
-```bash
-node twer.js twer.csv --influxHost [yourHost] --influxDb [yourdatabase] --influxUser [youraccount] --influxPass [yourpass] > temp && ./backup.sh
-```
-Notice:  replace `[yourHost]`, `[yourdatabase]`, `[youraccount]` and `[yourpass]` to yours.
+#### Notice:
+- replace `[yourHost]`, `[yourdatabase]`, `[youraccount]` and `[yourpass]` to yours.
+- the `node ...` command will **ONLY** grab data once, if you need continuous grab data into influxdb, please use `crontab` to schedule it. (we suggest 20mins or more)
+
+
+# grafana frontend website
+- clone `gh-pages` branch to another folder.
+- modify `influxdb:{...}` content in config.js to fit your influxdb settings.
+- run a website service to provide frontend website.
 
 
 # Other usages
