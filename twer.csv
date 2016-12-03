@@ -16,7 +16,7 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 桃園縣,長庚醫療財團法人林口長庚紀念醫院,1132070011,林口長庚,,https://www.cgmh.org.tw/bed/erd/index.asp?loc=3,https://gist.github.com/cornguo/0c9c56931d1d4aa38758,cornguo,,php,
 新竹市,國立臺灣大學醫學院附設醫院新竹分院,0412040012,新竹台大,,https://www.hch.gov.tw/hch/Information/LatestNewsDetail.aspx?MNO=C025&ID=9791,https://gist.github.com/lancetw/8e2f2c03e087938c1f9b6031d63558e1,lanf0n,,py,2015/3/4 inserted.
 新竹市,財團法人國泰綜合醫院,1112010528,新竹國泰,,http://med.cgh.org.tw/unit/branch/Pharmacy/ebl/RealTimeInfoHC.html,https://gist.github.com/lancetw/6a1e3ba23302bad6e576135861afe5a4,lancetw,,py,
-新竹市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1112010519,新竹馬偕,https://wapps.mmh.org.tw/WebEMR/WebEMR/Default.aspx?a=HC,https://gist.github.com/lancetw/5fa76390f10469d86e2c28c1dd964512,lancetw,,py,
+新竹市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1112010519,新竹馬偕,,https://wapps.mmh.org.tw/WebEMR/WebEMR/Default.aspx?a=HC,https://gist.github.com/lancetw/5fa76390f10469d86e2c28c1dd964512,lancetw,,py,
 新竹縣,東元綜合醫院,1533050039,東元,,http://w3.tyh.com.tw/se_n_emergency.html,https://gist.github.com/lanfon72/e8cc945d48b7192164d2,lanf0n,,py,inserted 2016/3/1
 台中市,中山醫學大學附設醫院,1317040011,中山醫大,,http://www.csh.org.tw/ER/index.aspx,https://gist.github.com/cornguo/379556c003ca7d149c03,cornguo,,php,
 台中市,臺中榮民總醫院,0617060018,台中榮總,,http://www.vghtc.gov.tw/GipOpenWeb/wSite/sp?xdUrl=/wSite/query/Doctor/GetEmgBedInform.jsp&ctNode=55658&mp=1&idPath=213_55658,https://gist.github.com/cornguo/c3b97701f25acabb37fb,cornguo,,php,
