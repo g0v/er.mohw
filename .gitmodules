@@ -115,3 +115,9 @@
 [submodule "crawlers/1145010038"]
 	path = crawlers/1145010038
 	url = https://gist.github.com/t0mst0ne/a4345363deb0255a9698
+[submodule "crawlers/1112010519"]
+	path = crawlers/1112010519
+	url = https://gist.github.com/lancetw/5fa76390f10469d86e2c28c1dd964512
+[submodule "crawlers/1112010528"]
+	path = crawlers/1112010528
+	url = https://gist.github.com/lancetw/6a1e3ba23302bad6e576135861afe5a4
