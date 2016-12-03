@@ -2,3 +2,4 @@ node_modules
 backup
 temp
 error.log
+crawlers/*
