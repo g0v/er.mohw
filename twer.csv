@@ -3,8 +3,8 @@ county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,lang
 宜蘭縣,財團法人羅許基金會羅東博愛醫院,1434020015,博愛,,http://www.pohai.org.tw/pohai/index.php?option=com_wrapper&Itemid=2691,https://gist.github.com/lanfon72/b5e0e2299ae0180c16c7,lanf0n,johnny,py,
 基隆市,長庚醫療財團法人基隆長庚紀念醫院,1111060015,基隆長庚,,https://www.cgmh.org.tw/bed/erd/index.asp?loc=2,https://gist.github.com/f40aab166fb536ae3e1b,t0m,johnny,py,
 台北市,國泰醫療財團法人國泰綜合醫院,1101020018,國泰,,http://med.cgh.org.tw/unit/branch/Pharmacy/ebl/RealTimeInfoHQ.html,https://gist.github.com/lanfon72/3575509a8604f3bf7335,lanf0n,johnny,py,
-台北市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1101100011,台北馬偕,,https://trns.mmh.org.tw/WebEMR/Default.aspx,https://gist.github.com/t0mst0ne/fba18dcfd89b5ac69b9e,"t0mst0ne",,py,台北and馬偕：參考https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f
-新北市,(同上),1131100010,淡水馬偕,,https://trns.mmh.org.tw/WebEMR/Default.aspx,https://gist.github.com/lanfon72/7a43aedc8e8f7f63ca0a,lanf0n,,py,"combine by johnny: https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f"
+台北市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1101100011,台北馬偕,,https://wapps.mmh.org.tw/WebEMR/WebEMR/Default.aspx,https://gist.github.com/t0mst0ne/fba18dcfd89b5ac69b9e,"t0mst0ne",,py,台北and馬偕：參考https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f
+新北市,(同上),1131100010,淡水馬偕,,https://wapps.mmh.org.tw/WebEMR/WebEMR/Default.aspx,https://gist.github.com/lanfon72/7a43aedc8e8f7f63ca0a,lanf0n,,py,"combine by johnny: https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f"
 台北市,台北市立萬芳醫院,1301200010,萬芳,,http://www.wanfang.gov.tw/W402008web_new/epd_query.asp,https://gist.github.com/lanfon72/954b5d96ddf0e365f22f,lanf0n,johnny,py,
 台北市,三軍總醫院附設民眾診療服務處,0501110514,三總,,http://www1.ndmctsgh.edu.tw/ErOnlineNews/ErOnLineData.aspx,https://gist.github.com/lanfon72/b2e1cb6fc4b2fb2d2957,lanf0n,,py,
 台北市,台北榮民總醫院,0601160016,榮總,,https://www6.vghtpe.gov.tw/ERREALIFO/ERREALIFO.jsp,https://gist.github.com/lanfon72/b43d515d69041a1dae14,lanf0n,johnny,py,
