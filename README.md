@@ -34,7 +34,8 @@ http://creativecommons.org/publicdomain/zero/1.0
 * php **v5.x** and php5-curl. (didn't test on php7, if you do that, PR welcome.)
 
 ### submodules
-* run ```git submodule init && git submodule update --init``` to clone submodules.
+* use ```git clone --recursive https://github.com/g0v/er.mohw``` to clone submodules in the same time.
+* or run ```git submodule init && git submodule update --init``` to clone submodules. (`cd` to repo directory)
 
 
 # Running
