@@ -28,8 +28,10 @@ http://creativecommons.org/publicdomain/zero/1.0
 
 # Install crawlers
 ### dependencies
-* nodejs **v0.10.x** or **v4.2.3LTS**. (npm also required, it usually installed with nodejs)  
- (remember install npm modules from package.json. (`npm install` or `npm i`)
+* Task runner (one of below)
+  - nodejs **v0.10.x** or **v4.2.3LTS**. (npm also required, it usually installed with nodejs)  
+    (remember install npm modules from package.json. (`npm install` or `npm i`))
+  - python3.5+ and influxdb library
 * python2 and [requests library](http://docs.python-requests.org/en/latest/).
 * php **v5.x** and php5-curl. (didn't test on php7, if you do that, PR welcome.)
 
@@ -40,10 +42,14 @@ http://creativecommons.org/publicdomain/zero/1.0
 
 # Running
 ### Please make sure you already installed influxdb and crawlers.
-1. Run `mkdir backup` to create a directory to save backup.
-2. Run twer.js to grab data from submodule:
+1. Create a `backup` directory to save backup.
+2. Choice a Task runner to grab data from submodule:
 ```bash
+# For nodejs runner
 $ node twer.js twer.csv --influxHost [yourHost] --influxDb [yourdatabase] --influxUser [youraccount] --influxPass [yourpass] > temp && ./backup.sh
+
+# For python3 runner
+$ python3 runner.py twer.csv -host [yourHost] -db [yourdatabase] -user [youraccount] -pass [yourpassword] > temp && ./backup.sh
 ```
 #### Notice:
 - replace `[yourHost]`, `[yourdatabase]`, `[youraccount]` and `[yourpass]` to yours.
@@ -72,10 +78,18 @@ for the raw backup file, will be named as **"yyyy-mm-dd_HH-MM"**, for the `<date
   }
 }]
 ```
-### Add new parser
+### Add/update parser
 1. write down new parser in gist.
 2. insert new row into twer.csv
-3. run `node twer.js twer.csv --update --only <hospital_sn>`, if you want to update all, just run `node twer.js twer.csv --update`
+3. execute runner command:
+```bash
+# update one 
+$ node twer.js twer.csv --update --only <hospital_sn>
+$ python3 runner.py twer.csv --update --only <hospital_sn>
+# or update all
+$ node twer.js twer.csv --update
+$ python3 runner.py twer.csv --update
+```
 
 ### influx-db docker images wtih usages
 1. docker pull t0mst0ne/influx-er
