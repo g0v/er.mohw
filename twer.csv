@@ -1,43 +1,43 @@
 county,name,hospital_sn,abbr_zh,英文縮寫,URL,scraper,author,verified_by,language,"#請先閱讀 https://g0v.hackpad.com/vtLwiUfYgcc"
 ,,,,,,,,,,
-宜蘭縣,財團法人羅許基金會羅東博愛醫院,1434020015,博愛,,https://www.pohai.org.tw/_aid.php,https://gist.github.com/typingmonk/d63bf4a5b6b398115be36f726950d6fe,lanf0n,johnny,py,
-基隆市,長庚醫療財團法人基隆長庚紀念醫院,1111060015,基隆長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=2,https://gist.github.com/typingmonk/ec03435b5b2f7ff9be0b02c8ddd6202e,t0m,johnny,py,
-台北市,國泰醫療財團法人國泰綜合醫院,1101020018,國泰,,https://med.cgh.org.tw/unit/branch/Pharmacy/ebl/RealTimeInfoHQ.html,https://gist.github.com/typingmonk/1cab8a06524292a08d21065fbcd35927,lanf0n,johnny,py,
-台北市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1101100011,台北馬偕,mmhTP,https://mcloudws.mmh.org.tw/DMZWEBEMRA651/Default.aspx?a=TP,https://gist.github.com/typingmonk/e3b7bf6e7ced2a4c48c533f158a1fa71,"t0mst0ne",,py,台北and馬偕：參考https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f
-新北市,(同上),1131100010,淡水馬偕,,https://mcloudws.mmh.org.tw/DMZWEBEMRA651/Default.aspx?a=TS,https://gist.github.com/typingmonk/21b95c1605cb0727b97b8ae5d4c337fe,lanf0n,,py,"combine by johnny: https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f"
-台北市,台北市立萬芳醫院,1301200010,萬芳,,https://old.wanfang.gov.tw/p11_information2,https://gist.github.com/typingmonk/8e1e16e94fdee4d3d877627f38ddda72,lanf0n,johnny,py,
+宜蘭縣,財團法人羅許基金會羅東博愛醫院,1434020015,博愛,,https://www.pohai.org.tw/_aid.php,https://gist.github.com/typingmonk/d63bf4a5b6b398115be36f726950d6fe,typingmonk,,py,
+基隆市,長庚醫療財團法人基隆長庚紀念醫院,1111060015,基隆長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=2,https://gist.github.com/typingmonk/ec03435b5b2f7ff9be0b02c8ddd6202e,typingmonk,,py,
+台北市,國泰醫療財團法人國泰綜合醫院,1101020018,國泰,,https://med.cgh.org.tw/unit/branch/Pharmacy/ebl/RealTimeInfoHQ.html,https://gist.github.com/typingmonk/1cab8a06524292a08d21065fbcd35927,typingmonk,,py,
+台北市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1101100011,台北馬偕,mmhTP,https://mcloudws.mmh.org.tw/DMZWEBEMRA651/Default.aspx?a=TP,https://gist.github.com/typingmonk/e3b7bf6e7ced2a4c48c533f158a1fa71,typingmonk,,py,台北and馬偕：參考https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f
+新北市,(同上),1131100010,淡水馬偕,,https://mcloudws.mmh.org.tw/DMZWEBEMRA651/Default.aspx?a=TS,https://gist.github.com/typingmonk/21b95c1605cb0727b97b8ae5d4c337fe,typingmonk,,py,"combine by johnny: https://gist.github.com/thewayiam/e0538f4b6bcf90bade0f"
+台北市,台北市立萬芳醫院,1301200010,萬芳,,https://old.wanfang.gov.tw/p11_information2,https://gist.github.com/typingmonk/8e1e16e94fdee4d3d877627f38ddda72,typingmonk,,py,
 台北市,三軍總醫院附設民眾診療服務處,0501110514,三總,,http://www1.ndmctsgh.edu.tw/ErOnlineNews/ErOnLineData.aspx,https://gist.github.com/lanfon72/b2e1cb6fc4b2fb2d2957,lanf0n,,py,
-台北市,台北榮民總醫院,0601160016,榮總,,https://www6.vghtpe.gov.tw/ERREALIFO/ERREALIFO.jsp,https://gist.github.com/typingmonk/9679690a2a05bdac5287b86f2ae05062,lanf0n,johnny,py,
-台北市,國立臺灣大學醫學院附設醫院,0401180014,台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/NTUHEmgInfo.aspx,https://gist.github.com/typingmonk/01b7f97dcc9993f67fe69e7416dfaa09,lanf0n,,py,
-台北市,新光醫療財團法人新光吳火獅紀念醫院,1101150011,新光,,https://reg.skh.org.tw/regis_api/SickBedEmergency,https://gist.github.com/typingmonk/573ce45b5d2fd2548bfcdcc6c9b62352,cornguo,,php,
-新北市,衛生福利部雙和醫院,1331040513,雙和,,https://www.shh.org.tw/OldShhorg/page/EPD_V.aspx,https://gist.github.com/typingmonk/a50efd619971c17fd7ecab8accab2abc,lanf0n,,py,"fix values(bool, int, timestamp). (run at py2.7"
-新北市,財團法人徐元智先生醫藥基金會附設亞東紀念醫院,1131010011,亞東,,https://www.femh.org.tw/research/news_op.aspx,https://gist.github.com/typingmonk/211c7cbde71cb96a7fbd4f1891c4bbe1,lanf0n,,py,"fix values(bool, int, timestamp). (run at py2.7"
-新北市,佛教慈濟醫療財團法人台北慈濟醫院,1131050515,台北慈濟,,https://app.tzuchi.com.tw/tchw/TPHIS5WebBedInfo/erbedinfo.aspx,https://gist.github.com/typingmonk/6a4289337c5b6747700e244e1412cf84,cornguo,,php,
-桃園縣,長庚醫療財團法人林口長庚紀念醫院,1132070011,林口長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=3,https://gist.github.com/typingmonk/322b18a578918ce8b4fcf62dd4bd4db1,cornguo,,php,
-新竹市,國立臺灣大學醫學院附設醫院新竹分院,0412040012,新竹台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/NTUHEmgInfoT4.aspx,https://gist.github.com/typingmonk/96ab466d88d960ea2000748aa151167a,lanf0n,,py,2015/3/4 inserted.
-新竹市,財團法人國泰綜合醫院,1112010528,新竹國泰,,https://med.cgh.org.tw/unit/branch/Pharmacy/ebl/RealTimeInfoHC.html,https://gist.github.com/typingmonk/7a557611acbbff1b2430d43b7dfc53fa,lancetw,,py,
-新竹市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1112010519,新竹馬偕,,https://mcloudws.mmh.org.tw/DMZWEBEMRA651/Default.aspx?a=HC,https://gist.github.com/typingmonk/463a0d389db2a23eaf5347d2b6cedd70,lancetw,,py,
-新竹縣,東元綜合醫院,1533050039,東元,,https://w3.tyh.com.tw/ErData.aspx,https://gist.github.com/typingmonk/af16aca2c6c5b0f211b793e88e316bf1,lanf0n,,py,inserted 2016/3/1
-台中市,中山醫學大學附設醫院,1317040011,中山醫大,,https://sysint.csh.org.tw/ER/index.aspx,https://gist.github.com/typingmonk/6d54e8af1fa8da29cefcf81cc23fe1c8,cornguo,,php,
-台中市,臺中榮民總醫院,0617060018,台中榮總,,https://eservicegw.vghtc.gov.tw/GatewaySpring/proxy/WebsiteSpring/emergency/live,https://gist.github.com/typingmonk/5ab40e6182b37db462e114c2a631b773,cornguo,,php,
-台中市,中國醫藥大學附設醫院,1317050017,中國醫大,,https://emrcount.cmuh.org.tw/EmrCount/Default.aspx,https://gist.github.com/typingmonk/c4abbdc074bfd63a2f45294247397b1a,lanf0n,,py,"old version: https://gist.github.com/cornguo/e357bade74728a63d7d6"
-台中市,童綜合醫療社團法人童綜合醫院,0936060016,童綜,,https://zh-tw.sltung.com.tw/tung/BED/bed.html,https://gist.github.com/typingmonk/72a1adae1304caa9a10ef215d5828a8e,lanf0n,,python,
-台中市,光田醫療社團法人光田綜合醫院(沙鹿總院),0936050029,沙鹿光田,,https://www.ktgh.com.tw/ktgh/Medical/ERWardInfo,https://gist.github.com/typingmonk/75992e9626e7a4a503c1bf27cabee446,cornguo,,php,"please use big5-2003 instead of big5 for iconv // it will cause error: PHP Notice:  iconv(): Wrong charset, conversion from `big5-2003' to `utf-8' is not allowed, and there's no special characters that will cause problems"
-台中市,光田醫療社團法人光田綜合醫院(大甲院區),1536030075,大甲光田,,https://www.ktgh.com.tw/ktgh/Medical/ERWardInfo,https://gist.github.com/typingmonk/c1770dc0174e57a74670160f60b00349,cornguo,,php,
-彰化縣,彰化基督教醫療財團法人彰化基督教醫院,1137010024,彰基,,https://www.cch.org.tw/news3.aspx,https://gist.github.com/typingmonk/574df265a9daf3707d3e27c452817c78,cornguo,,php,
-彰化縣,秀傳醫療社團法人秀傳紀念醫院,0937010019,秀傳,,https://www.scmh.org.tw/FirstAid.aspx?Kind=2,https://gist.github.com/typingmonk/a89e03e343a6b4afb85c0adf4ffd95cb,t0mst0ne,,py,
-嘉義縣,長庚醫療財團法人嘉義長庚紀念醫院,1140010510,嘉義長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=6,https://gist.github.com/typingmonk/b240a56673137d47c6b9cec29799d94a,cornguo,,php,
-雲林縣,國立臺灣大學醫學院附設醫院雲林分院,0439010518,雲林台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/Y0NTUHEmgInfo.aspx,https://gist.github.com/typingmonk/39efe608984f50bd804f4fe440ad7076,cornguo,,php,
-嘉義縣,佛教慈濟醫療財團法人大林慈濟醫院,1240030514,大林慈濟,,https://app.tzuchi.com.tw/tchw/ERInfo_DL/ERInformation.aspx,https://gist.github.com/typingmonk/3ab837454e1b39e00c82e6895de02d83,t0mst0ne,,py,2016/3/1 inserted.
-台南市,奇美醫療財團法人奇美醫院,1141310019,奇美,,https://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/typingmonk/7b02951c596465aaa85274caf5877a9f,lanf0n,,py,
-台南市,奇美醫療財團法人佳里奇美醫院,1105050012,佳里奇美,,https://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/typingmonk/241d11ee95135de0a02c4a6f86cfc374,lanf0n,,py,"2015/2/25 inserted."
-台南市,奇美醫療財團法人柳營奇美醫院,1141090512,柳營奇美,,https://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/typingmonk/b066c873e9e8747e2768a03846dfd9b4,lanf0n,,py,"2015/2/25 inserted."
-台南市,國立成功大學醫學院附設醫院,0421040011,成大,,https://web.hosp.ncku.edu.tw/nckm/ER/default.aspx,https://gist.github.com/typingmonk/d7fc448b221b82e8e83e1fb69bb1cd7b,cornguo,,php,
-高雄市,財團法人私立高雄醫學大學附設中和紀念醫院,1302050014,高醫,,https://www.kmuh.org.tw/Web/EmgStatusBoard/Home/emgRealTimeStatus?hosp=KMUH,https://gist.github.com/typingmonk/9c2ced8f0989c2a0efc83b8a87fc66d1,johnny,,py,
-高雄市,義大醫療財團法人義大醫院,1142120001,義大,,https://www.edah.org.tw/Immediate_E/ED,https://gist.github.com/typingmonk/a8c3fa6b8f286faae54a92c33b3fba02,cornguo,,php,
-高雄市,高雄榮民總醫院,0602030026,高雄榮總,,https://www.vghks.gov.tw/Json_Read.aspx?type=1&url=https://wwwmgr.vghks.gov.tw/Upload/vghksbed/List_Emergency.json,https://gist.github.com/typingmonk/137b9dcd6c08d7f302f75c64ed7fc8fb,lanf0n,,py,
-高雄市,長庚醫療財團法人高雄長庚紀念醫院,1142100017,高雄長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=8,https://gist.github.com/typingmonk/f6fd43768d5d5b7415f94609d1fe41fa,cornguo,,php,
-屏東縣,安泰醫療社團法人安泰醫院,0943030019,安泰,,https://www.tsmh.org.tw/sites/web_dg/er_status/er_show_db.php,https://gist.github.com/typingmonk/17169d7a0e8b325b6372be6c77491258,lanf0n,,py,"hint: https://gist.githubusercontent.com/clkao/4315df56fe8193138f67/raw/422ab0d3fedf0926ee0087ba529e52dd4a303e0e/gistfile1.txt"
-花蓮縣,佛教慈濟醫療財團法人花蓮慈濟醫院,1145010010,慈濟,,https://app.tzuchi.com.tw/tchw/erinfo_hl/erinfo.aspx,https://gist.github.com/typingmonk/71ffadec5b82338ed16d164e5d7fc5ef,t0mst0ne,,py,
-花蓮縣,臺灣基督教門諾會醫療財團法人門諾醫院,1145010038,花蓮門諾,,https://erd.mch.org.tw/,https://gist.github.com/typingmonk/2da3b21a4f4568482921587738315f8d,t0mst0ne,,py,
-嘉義縣,戴德森醫療財團法人嘉義基督教醫院,1122010012,嘉基,,https://www.cych.org.tw/cychweb/er/er_news.aspx,https://gist.github.com/typingmonk/7722ff761d0c34d959d0786441c647ba,t0mst0ne,,py,
+台北市,台北榮民總醫院,0601160016,榮總,,https://www6.vghtpe.gov.tw/ERREALIFO/ERREALIFO.jsp,https://gist.github.com/typingmonk/9679690a2a05bdac5287b86f2ae05062,typingmonk,,py,
+台北市,國立臺灣大學醫學院附設醫院,0401180014,台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/NTUHEmgInfo.aspx,https://gist.github.com/typingmonk/01b7f97dcc9993f67fe69e7416dfaa09,typingmonk,,py,
+台北市,新光醫療財團法人新光吳火獅紀念醫院,1101150011,新光,,https://reg.skh.org.tw/regis_api/SickBedEmergency,https://gist.github.com/typingmonk/573ce45b5d2fd2548bfcdcc6c9b62352,typingmonk,,php,
+新北市,衛生福利部雙和醫院,1331040513,雙和,,https://www.shh.org.tw/OldShhorg/page/EPD_V.aspx,https://gist.github.com/typingmonk/a50efd619971c17fd7ecab8accab2abc,typingmonk,,py,"fix values(bool, int, timestamp). (run at py2.7"
+新北市,財團法人徐元智先生醫藥基金會附設亞東紀念醫院,1131010011,亞東,,https://www.femh.org.tw/research/news_op.aspx,https://gist.github.com/typingmonk/211c7cbde71cb96a7fbd4f1891c4bbe1,typingmonk,,py,"fix values(bool, int, timestamp). (run at py2.7"
+新北市,佛教慈濟醫療財團法人台北慈濟醫院,1131050515,台北慈濟,,https://app.tzuchi.com.tw/tchw/TPHIS5WebBedInfo/erbedinfo.aspx,https://gist.github.com/typingmonk/6a4289337c5b6747700e244e1412cf84,typingmonk,,php,
+桃園縣,長庚醫療財團法人林口長庚紀念醫院,1132070011,林口長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=3,https://gist.github.com/typingmonk/322b18a578918ce8b4fcf62dd4bd4db1,typingmonk,,php,
+新竹市,國立臺灣大學醫學院附設醫院新竹分院,0412040012,新竹台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/NTUHEmgInfoT4.aspx,https://gist.github.com/typingmonk/96ab466d88d960ea2000748aa151167a,typingmonk,,py,2015/3/4 inserted.
+新竹市,財團法人國泰綜合醫院,1112010528,新竹國泰,,https://med.cgh.org.tw/unit/branch/Pharmacy/ebl/RealTimeInfoHC.html,https://gist.github.com/typingmonk/7a557611acbbff1b2430d43b7dfc53fa,typingmonk,,py,
+新竹市,財團法人臺灣基督長老教會馬偕紀念社會事業基金會馬偕紀念醫院,1112010519,新竹馬偕,,https://mcloudws.mmh.org.tw/DMZWEBEMRA651/Default.aspx?a=HC,https://gist.github.com/typingmonk/463a0d389db2a23eaf5347d2b6cedd70,typingmonk,,py,
+新竹縣,東元綜合醫院,1533050039,東元,,https://w3.tyh.com.tw/ErData.aspx,https://gist.github.com/typingmonk/af16aca2c6c5b0f211b793e88e316bf1,typingmonk,,py,inserted 2016/3/1
+台中市,中山醫學大學附設醫院,1317040011,中山醫大,,https://sysint.csh.org.tw/ER/index.aspx,https://gist.github.com/typingmonk/6d54e8af1fa8da29cefcf81cc23fe1c8,typingmonk,,php,
+台中市,臺中榮民總醫院,0617060018,台中榮總,,https://eservicegw.vghtc.gov.tw/GatewaySpring/proxy/WebsiteSpring/emergency/live,https://gist.github.com/typingmonk/5ab40e6182b37db462e114c2a631b773,typingmonk,,php,
+台中市,中國醫藥大學附設醫院,1317050017,中國醫大,,https://emrcount.cmuh.org.tw/EmrCount/Default.aspx,https://gist.github.com/typingmonk/c4abbdc074bfd63a2f45294247397b1a,typingmonk,,py,"old version: https://gist.github.com/cornguo/e357bade74728a63d7d6"
+台中市,童綜合醫療社團法人童綜合醫院,0936060016,童綜,,https://zh-tw.sltung.com.tw/tung/BED/bed.html,https://gist.github.com/typingmonk/72a1adae1304caa9a10ef215d5828a8e,typingmonk,,python,
+台中市,光田醫療社團法人光田綜合醫院(沙鹿總院),0936050029,沙鹿光田,,https://www.ktgh.com.tw/ktgh/Medical/ERWardInfo,https://gist.github.com/typingmonk/75992e9626e7a4a503c1bf27cabee446,typingmonk,,php,"please use big5-2003 instead of big5 for iconv // it will cause error: PHP Notice:  iconv(): Wrong charset, conversion from `big5-2003' to `utf-8' is not allowed, and there's no special characters that will cause problems"
+台中市,光田醫療社團法人光田綜合醫院(大甲院區),1536030075,大甲光田,,https://www.ktgh.com.tw/ktgh/Medical/ERWardInfo,https://gist.github.com/typingmonk/c1770dc0174e57a74670160f60b00349,typingmonk,,php,
+彰化縣,彰化基督教醫療財團法人彰化基督教醫院,1137010024,彰基,,https://www.cch.org.tw/news3.aspx,https://gist.github.com/typingmonk/574df265a9daf3707d3e27c452817c78,typingmonk,,php,
+彰化縣,秀傳醫療社團法人秀傳紀念醫院,0937010019,秀傳,,https://www.scmh.org.tw/FirstAid.aspx?Kind=2,https://gist.github.com/typingmonk/a89e03e343a6b4afb85c0adf4ffd95cb,typingmonk,,py,
+嘉義縣,長庚醫療財團法人嘉義長庚紀念醫院,1140010510,嘉義長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=6,https://gist.github.com/typingmonk/b240a56673137d47c6b9cec29799d94a,typingmonk,,php,
+雲林縣,國立臺灣大學醫學院附設醫院雲林分院,0439010518,雲林台大,,https://reg.ntuh.gov.tw/EmgInfoBoard/Y0NTUHEmgInfo.aspx,https://gist.github.com/typingmonk/39efe608984f50bd804f4fe440ad7076,typingmonk,,php,
+嘉義縣,佛教慈濟醫療財團法人大林慈濟醫院,1240030514,大林慈濟,,https://app.tzuchi.com.tw/tchw/ERInfo_DL/ERInformation.aspx,https://gist.github.com/typingmonk/3ab837454e1b39e00c82e6895de02d83,typingmonk,,py,2016/3/1 inserted.
+台南市,奇美醫療財團法人奇美醫院,1141310019,奇美,,https://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/typingmonk/7b02951c596465aaa85274caf5877a9f,typingmonk,,py,
+台南市,奇美醫療財團法人佳里奇美醫院,1105050012,佳里奇美,,https://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/typingmonk/241d11ee95135de0a02c4a6f86cfc374,typingmonk,,py,"2015/2/25 inserted."
+台南市,奇美醫療財團法人柳營奇美醫院,1141090512,柳營奇美,,https://www.chimei.org.tw/%E6%80%A5%E8%A8%BA%E5%8D%B3%E6%99%82%E8%A8%8A%E6%81%AF/main.aspx,https://gist.github.com/typingmonk/b066c873e9e8747e2768a03846dfd9b4,typingmonk,,py,"2015/2/25 inserted."
+台南市,國立成功大學醫學院附設醫院,0421040011,成大,,https://web.hosp.ncku.edu.tw/nckm/ER/default.aspx,https://gist.github.com/typingmonk/d7fc448b221b82e8e83e1fb69bb1cd7b,typingmonk,,php,
+高雄市,財團法人私立高雄醫學大學附設中和紀念醫院,1302050014,高醫,,https://www.kmuh.org.tw/Web/EmgStatusBoard/Home/emgRealTimeStatus?hosp=KMUH,https://gist.github.com/typingmonk/9c2ced8f0989c2a0efc83b8a87fc66d1,typingmonk,,py,
+高雄市,義大醫療財團法人義大醫院,1142120001,義大,,https://www.edah.org.tw/Immediate_E/ED,https://gist.github.com/typingmonk/a8c3fa6b8f286faae54a92c33b3fba02,typingmonk,,php,
+高雄市,高雄榮民總醫院,0602030026,高雄榮總,,https://www.vghks.gov.tw/Json_Read.aspx?type=1&url=https://wwwmgr.vghks.gov.tw/Upload/vghksbed/List_Emergency.json,https://gist.github.com/typingmonk/137b9dcd6c08d7f302f75c64ed7fc8fb,typingmonk,,py,
+高雄市,長庚醫療財團法人高雄長庚紀念醫院,1142100017,高雄長庚,,https://webapp.cgmh.org.tw/bed/erd/index.asp?loc=8,https://gist.github.com/typingmonk/f6fd43768d5d5b7415f94609d1fe41fa,typingmonk,,php,
+屏東縣,安泰醫療社團法人安泰醫院,0943030019,安泰,,https://www.tsmh.org.tw/sites/web_dg/er_status/er_show_db.php,https://gist.github.com/typingmonk/17169d7a0e8b325b6372be6c77491258,typingmonk,,py,"hint: https://gist.githubusercontent.com/clkao/4315df56fe8193138f67/raw/422ab0d3fedf0926ee0087ba529e52dd4a303e0e/gistfile1.txt"
+花蓮縣,佛教慈濟醫療財團法人花蓮慈濟醫院,1145010010,慈濟,,https://app.tzuchi.com.tw/tchw/erinfo_hl/erinfo.aspx,https://gist.github.com/typingmonk/71ffadec5b82338ed16d164e5d7fc5ef,typingmonk,,py,
+花蓮縣,臺灣基督教門諾會醫療財團法人門諾醫院,1145010038,花蓮門諾,,https://erd.mch.org.tw/,https://gist.github.com/typingmonk/2da3b21a4f4568482921587738315f8d,typingmonk,,py,
+嘉義縣,戴德森醫療財團法人嘉義基督教醫院,1122010012,嘉基,,https://www.cych.org.tw/cychweb/er/er_news.aspx,https://gist.github.com/typingmonk/7722ff761d0c34d959d0786441c647ba,typingmonk,,py,
